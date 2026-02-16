@@ -7,4 +7,5 @@ public class Item : ScriptableObject
     public Sprite icon;
     public bool stackable;
     public int maxStack = 1;
+    // Item can give multiple ? 
 }

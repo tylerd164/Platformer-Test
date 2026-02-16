@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Inventory inventory;
-    public InventorySlotUI[] slotsUI;
+    [SerializeField] public Inventory inventory;
+    [SerializeField] public InventorySlotUI[] slotsUI;
 
     private void Update()
     {

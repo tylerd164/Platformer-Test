@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class InventorySlotUI : MonoBehaviour
 {
-    public Image icon;
-    public TextMeshProUGUI amountText;
+    [SerializeField] public Image icon;
+    [SerializeField] public TextMeshProUGUI amountText;
 
     public void UpdateSlot(InventorySlot slot)
     {

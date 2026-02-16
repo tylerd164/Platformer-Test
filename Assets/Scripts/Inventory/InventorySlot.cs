@@ -1,8 +1,10 @@
+using UnityEngine;
+
 [System.Serializable] // explain 
 public class InventorySlot
 {
-    public Item item;
-    public int amount;
+    [SerializeField] public Item item;
+    [SerializeField] public int amount;
 
     public bool IsEmpty()
     {

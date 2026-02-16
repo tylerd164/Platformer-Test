@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class InventoryInput : MonoBehaviour
 {
-    public GameObject inventoryUI;
+    [SerializeField] public GameObject inventoryUI;
 
-    // Old Input system
+    // Old Input system, Refractor to new 
     void Update()
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame ||
