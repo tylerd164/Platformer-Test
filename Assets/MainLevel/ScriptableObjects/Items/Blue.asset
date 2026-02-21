@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47d3a0f994f74d7418b30cd0b2814e7f, type: 3}
-  m_Name: Test
+  m_Name: Blue
   m_EditorClassIdentifier: 
-  itemName: Test
-  icon: {fileID: 5931842347579807508, guid: a5de58c83f26c18409a125e3ed70b7a6, type: 3}
+  itemName: TestSquare
+  icon: {fileID: -3320418183320529682, guid: fd4e72024fc7be7498460c09538125ff, type: 3}
   stackable: 1
   maxStack: 5

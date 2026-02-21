@@ -11,6 +11,7 @@ public class InventoryInput : MonoBehaviour
         if (Keyboard.current.tabKey.wasPressedThisFrame ||
             Gamepad.current?.startButton.wasPressedThisFrame == true)
         {
+            // when the inventory is active, game time pauses 
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             Time.timeScale = inventoryUI.activeSelf ? 0 : 1;
         }
