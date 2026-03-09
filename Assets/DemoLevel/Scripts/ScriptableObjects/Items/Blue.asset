@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47d3a0f994f74d7418b30cd0b2814e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f4e2ed1869a65f4a83efd8b40a7b072, type: 3}
   m_Name: Blue
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Blue
   icon: {fileID: -3320418183320529682, guid: fd4e72024fc7be7498460c09538125ff, type: 3}
-  stackable: 0
-  maxStack: 1
+  stackable: 1
+  maxStack: 5
+  collectionID: Blue

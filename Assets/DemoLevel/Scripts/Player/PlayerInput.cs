@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour
     private const string INTERACT = "Interact";
     private const string PAUSE = "Pause";
 
+    // Exit mini game:
+    private const string EXIT = "Exit";
+
     // UI actions 
     private const string NAVIGATE = "Navigate";
     private const string SUBMIT = "Submit";
@@ -43,6 +46,9 @@ public class PlayerInput : MonoBehaviour
     private InputAction interactAction;
     private InputAction pauseAction;
 
+    // Exit mini game:
+    private InputAction exitAction;
+
     // UI actions
     private InputAction navigateAction;
     private InputAction submitAction;
@@ -68,6 +74,9 @@ public class PlayerInput : MonoBehaviour
         interactAction = playerMap.FindAction(INTERACT);
         pauseAction = playerMap.FindAction(PAUSE);
 
+        // Exit mini game: 
+        exitAction = playerMap.FindAction(EXIT);
+
         // UI actions
         navigateAction = uiMap.FindAction(NAVIGATE);
         submitAction = uiMap.FindAction(SUBMIT);
@@ -90,14 +99,17 @@ public class PlayerInput : MonoBehaviour
     }
 
     private void Update()
-    {
+    { 
         if (isPaused) return;
 
-        // If nothing selected (common controller issue)
+        // Will defaul to fist button on UI
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             EventSystem.current.SetSelectedGameObject(firstButton);
         }
+
+        playerState.exitButtonPressed = exitAction.WasPressedThisFrame();
+        playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
 
         HandleMovementInput();
         HandleIdleState();
@@ -112,7 +124,6 @@ public class PlayerInput : MonoBehaviour
         inputValue = moveAction.ReadValue<Vector2>();
 
         playerState.jumpPressed = jumpAction.WasPressedThisFrame();
-        playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
         playerState.sprintPressed = sprintAction.IsPressed();
     }
 

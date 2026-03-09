@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47d3a0f994f74d7418b30cd0b2814e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f4e2ed1869a65f4a83efd8b40a7b072, type: 3}
   m_Name: Pink
   m_EditorClassIdentifier: 
-  itemName: Test
+  itemName: Pink
   icon: {fileID: 5931842347579807508, guid: a5de58c83f26c18409a125e3ed70b7a6, type: 3}
   stackable: 0
   maxStack: 1
+  collectionID: Pink

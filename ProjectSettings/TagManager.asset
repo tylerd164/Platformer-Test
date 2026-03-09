@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Coin
   - DoorKey
+  - Audio
+  - Ball
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -54,6 +57,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2479461267
+    locked: 0
+  - name: InventoryUI
+    uniqueID: 3795535429
     locked: 0
   - name: UI
     uniqueID: 2304548119

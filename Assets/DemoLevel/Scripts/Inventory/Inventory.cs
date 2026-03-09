@@ -44,6 +44,14 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public void UseItem(InventorySlot slot, GameObject user)
+    {
+        if (slot.item != null)
+        {
+            slot.item.Use(user);
+            RemoveItem(slot);
+        }
+    }
     public void RemoveItem(InventorySlot slot)
     {
         slot.amount--;

@@ -43,7 +43,7 @@ public class UINavController : MonoBehaviour
 
     void Update()
     {
-        // If nothing selected (common controller issue)
+        // If nothing selected
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             EventSystem.current.SetSelectedGameObject(firstButton);

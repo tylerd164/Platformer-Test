@@ -17,6 +17,8 @@ public class PlayerStateController : MonoBehaviour
     public bool isIdle { get; set; }
     public bool interactButtonPressed { get; set; }
     public bool pauseButtonPressed { get; set; }
+    public bool exitButtonPressed { get; set; }
+    public bool puzzleActive { get; set; }
 
     public float currentVeloctiyX { get; set; }
 

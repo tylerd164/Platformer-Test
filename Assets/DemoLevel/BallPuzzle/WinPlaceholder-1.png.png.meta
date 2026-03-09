@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 24185217af0dfe647a27e366f8dfb992
+guid: d0d08755f7aca0d45a87ca61caf22967
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5180437444588030870
+    second: WinPlaceholder-1.png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -39,7 +42,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -95,7 +98,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WinPlaceholder-1.png_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b4dc1a86c94e740800000000000000
+      internalID: 5180437444588030870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -109,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WinPlaceholder-1.png_0: 5180437444588030870
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -47,13 +47,11 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
     }
 
-    // ------------------------
     // MOVEMENT
-    // ------------------------
 
     private void HandleMovement()
     {
-        if (!playerState.wallCollision)
+        if (!playerState.wallCollision && !playerState.puzzleActive)
         {
             Vector2 input = playerInput.GetMovementVectorNormalized();
 
@@ -76,16 +74,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleWalkInput()
     {
-        Vector2 input = playerInput.GetMovementVectorNormalized();
-        playerState.moveInput = Mathf.Abs(input.x) > 0.01f;
+        if (!playerState.puzzleActive)
+        {
+            Vector2 input = playerInput.GetMovementVectorNormalized();
+            playerState.moveInput = Mathf.Abs(input.x) > 0.01f;
+        }
     }
 
-    // ------------------------
     // JUMPING
-    // ------------------------
 
     private void HandleJump()
     {
+        if (playerState.puzzleActive)
+            return;
+
         if (!playerState.jumpPressed)
             return;
 
@@ -100,21 +102,22 @@ public class PlayerMovement : MonoBehaviour
         playerState.jumpPressed = false; // consume jump input
     }
 
-    // ------------------------
     // SPRITE FLIP
-    // ------------------------
 
     private void HandleSpriteFlip()
     {
-        Vector2 input = playerInput.GetMovementVectorNormalized();
+        if (!playerState.puzzleActive)
+        {
+            Vector2 input = playerInput.GetMovementVectorNormalized();
 
-        if (Mathf.Abs(input.x) > 0.01f)
-            lastMoveDirection = new Vector2(input.x, 0f);
+            if (Mathf.Abs(input.x) > 0.01f)
+                lastMoveDirection = new Vector2(input.x, 0f);
 
-        if (lastMoveDirection.x > 0f)
-            playerSprite.flipX = false;
+            if (lastMoveDirection.x > 0f)
+                playerSprite.flipX = false;
 
-        else if (lastMoveDirection.x < 0f)
-            playerSprite.flipX = true;
+            else if (lastMoveDirection.x < 0f)
+                playerSprite.flipX = true;
+        }
     }
 }
