@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
     // Player movement actions
     private const string MOVE = "Move";
     private const string JUMP = "Jump";
-    private const string SPRINT = "Sprint";
+    //private const string SPRINT = "Sprint";
     private const string INTERACT = "Interact";
     private const string PAUSE = "Pause";
 
@@ -42,7 +42,7 @@ public class PlayerInput : MonoBehaviour
     // player movement actions
     private InputAction moveAction;
     private InputAction jumpAction;
-    private InputAction sprintAction;
+    //private InputAction sprintAction;
     private InputAction interactAction;
     private InputAction pauseAction;
 
@@ -70,7 +70,7 @@ public class PlayerInput : MonoBehaviour
         // player movement actions
         moveAction = playerMap.FindAction(MOVE);
         jumpAction = playerMap.FindAction(JUMP);
-        sprintAction = playerMap.FindAction(SPRINT);
+        //sprintAction = playerMap.FindAction(SPRINT);
         interactAction = playerMap.FindAction(INTERACT);
         pauseAction = playerMap.FindAction(PAUSE);
 
@@ -122,9 +122,9 @@ public class PlayerInput : MonoBehaviour
     private void HandleMovementInput()
     {
         inputValue = moveAction.ReadValue<Vector2>();
-
         playerState.jumpPressed = jumpAction.WasPressedThisFrame();
-        playerState.sprintPressed = sprintAction.IsPressed();
+
+        //playerState.sprintPressed = sprintAction.IsPressed();
     }
 
     private void OnPausePressed(InputAction.CallbackContext context)

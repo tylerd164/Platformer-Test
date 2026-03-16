@@ -1547,7 +1547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 442362653}
   m_Layer: 8
-  m_Name: platformCheckPoint
+  m_Name: groundCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,7 +1562,7 @@ Transform:
   m_GameObject: {fileID: 442362652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.11, z: 0}
+  m_LocalPosition: {x: 0, y: -1.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1743,9 +1743,8 @@ GameObject:
   - component: {fileID: 499144994}
   - component: {fileID: 499145001}
   - component: {fileID: 499144995}
-  - component: {fileID: 499144998}
-  - component: {fileID: 499144997}
   - component: {fileID: 499145000}
+  - component: {fileID: 499145002}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1781,7 +1780,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b868072a27b40174e8ed991e6261f642, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1817,52 +1816,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.582672, y: 5.3732166}
   m_EdgeRadius: 0
---- !u!114 &499144997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499144993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b91cd5e2d2d8642ac64c30eab83aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 181614140}
-  playerState: {fileID: 1445628896}
-  wallCheckDistance: 2
-  platformCheckDistance: 0.5
-  boxSize: {x: 3, y: 3}
-  wallCheckPoint: {fileID: 1434967633}
-  platformCheckPoint: {fileID: 442362653}
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &499144998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499144993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f46f7b700cdaaa64aa8f34d0c528f357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 181614140}
-  playerState: {fileID: 1445628896}
-  playerSprite: {fileID: 1445628894}
-  playerSpeed: 18
-  acceleration: 45
-  sprintMultiplier: 2
-  airControlMultiplier: 1
-  jumpForce: 35
-  maxJumps: 1
 --- !u!114 &499145000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,7 +1845,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1904,6 +1857,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &499145002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499144993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a215b1c098ab9f84aade43d22a5bb534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 181614140}
+  playerState: {fileID: 1445628896}
+  playerSprite: {fileID: 1445628894}
+  moveSpeed: 20
+  jumpForce: 20
+  maxJumps: 2
+  fallMultiplier: 1.5
+  coyoteTime: 0.1
+  jumpBufferTime: 0.1
+  wallSlideSpeed: 0.1
+  wallJumpForce: {x: 20, y: 20}
+  groundCheck: {fileID: 442362653}
+  wallCheck: {fileID: 1434967633}
+  groundRadius: 1.5
+  wallCheckDistance: 1.8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,7 +2022,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.64687, y: -56.389107, z: 0}
+  m_LocalPosition: {x: -83.63215, y: -56.389107, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

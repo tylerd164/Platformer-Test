@@ -16,8 +16,8 @@ TagManager:
   - Background
   - Water
   - UI
-  - PlatformLayer
-  - WallLayer
+  - groundLayer
+  - wallLayer
   - Player
   - 
   - 
