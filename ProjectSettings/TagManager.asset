@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Coin
+  - DoorKey
+  - Audio
+  - Ball
+  - Wall
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - PlatformLayer
+  - WallLayer
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2420321555
+    locked: 0
+  - name: Props
+    uniqueID: 105902949
+    locked: 0
+  - name: Environment
+    uniqueID: 1848270695
+    locked: 0
+  - name: Player
+    uniqueID: 2479461267
+    locked: 0
+  - name: InventoryUI
+    uniqueID: 3795535429
+    locked: 0
+  - name: UI
+    uniqueID: 2304548119
+    locked: 0
+  m_RenderingLayers:
+  - Default
