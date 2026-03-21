@@ -27,11 +27,11 @@ public class NewPlayerMovement : MonoBehaviour
     [Header("Enviroment Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform upperSurfaceCheck;
+    [SerializeField] private Transform middleSurfaceCheck;
     [SerializeField] private Transform lowerSurfaceCheck;
     [SerializeField] private float groundRadius = 0.2f;
     [SerializeField] private float surfaceCheckDistance = 0.5f;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private LayerMask levelLayer;
 
     private Rigidbody2D rb;
     private Collider2D playerCollider;
@@ -44,8 +44,8 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
+    private bool isFacingWall;
     private bool givePlayerExtraJump;
-    private bool stopWalkInput;
     private int jumpsRemaining;
     private int wallDirection;
 
@@ -82,7 +82,13 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (!isWallSliding || jumpsRemaining < 1)
+        if (isTouchingWall && jumpsRemaining < 1 && !isFacingWall)
+        {
+            Vector2 moveInput = playerInput.GetMovementVectorNormalized();
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        }
+
+        if (!isTouchingWall)
         {
             Vector2 moveInput = playerInput.GetMovementVectorNormalized();
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
@@ -193,15 +199,16 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void CheckSurroundings()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, levelLayer);
 
         if(!isWallSliding)
         {
             rayDir = playerSprite.flipX ? Vector2.left : Vector2.right;
         }
 
-        RaycastHit2D upperHit = Physics2D.Raycast(upperSurfaceCheck.position, rayDir, surfaceCheckDistance, wallLayer);
-        RaycastHit2D lowerHit = Physics2D.Raycast(lowerSurfaceCheck.position, rayDir, surfaceCheckDistance, wallLayer);
+        RaycastHit2D upperHit = Physics2D.Raycast(upperSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
+        RaycastHit2D middleHit = Physics2D.Raycast(middleSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
+        RaycastHit2D lowerHit = Physics2D.Raycast(lowerSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
 
         // Draw the ray
         Debug.DrawRay(
@@ -209,11 +216,15 @@ public class NewPlayerMovement : MonoBehaviour
             rayDir * surfaceCheckDistance,
             upperHit ? Color.green : Color.red);
         Debug.DrawRay(
+            middleSurfaceCheck.position,
+            rayDir * surfaceCheckDistance,
+            middleHit ? Color.green : Color.red);
+        Debug.DrawRay(
             lowerSurfaceCheck.position,
             rayDir * surfaceCheckDistance,
             lowerHit ? Color.green : Color.red);
 
-        isTouchingWall = upperHit || lowerHit;
+        isTouchingWall = upperHit || middleHit || lowerHit;
 
         if (isGrounded)
         {
@@ -225,6 +236,14 @@ public class NewPlayerMovement : MonoBehaviour
     private void HandleSpriteFlip()
     {
         Vector2 moveInput = playerInput.GetMovementVectorNormalized();
+        Vector2 facingDir = playerSprite.flipX ? Vector2.left : Vector2.right;
+
+        RaycastHit2D facingWall = Physics2D.Raycast(middleSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
+        isFacingWall = facingWall;
+        Debug.DrawRay(
+            middleSurfaceCheck.position,
+            rayDir * surfaceCheckDistance,
+            facingWall ? Color.green : Color.red);
 
         if (Mathf.Abs(moveInput.x) > 0.01f)
             lastMoveDirection = new Vector2(moveInput.x, 0f);
