@@ -14,6 +14,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     [Header("Jump")]
     [SerializeField] private float jumpForce = 16f;
+    [SerializeField] private float reducedJumpForce = 10f;
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float fallLimit = -25f;
@@ -38,16 +39,17 @@ public class NewPlayerMovement : MonoBehaviour
 
     private Vector2 rayDir;
     private Vector2 lastMoveDirection = Vector2.right;
+
     private float coyoteCounter;
     private float jumpBufferCounter;
+    private int jumpsRemaining;
+    private int wallDirection;
 
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isFacingWall;
     private bool givePlayerExtraJump;
-    private int jumpsRemaining;
-    private int wallDirection;
 
     private void Awake()
     {
@@ -84,15 +86,19 @@ public class NewPlayerMovement : MonoBehaviour
     {
         if (isTouchingWall && jumpsRemaining < 1 && !isFacingWall)
         {
-            Vector2 moveInput = playerInput.GetMovementVectorNormalized();
-            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+            Movement();
         }
 
         if (!isTouchingWall)
         {
-            Vector2 moveInput = playerInput.GetMovementVectorNormalized();
-            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+            Movement();
         }
+    }
+
+    private void Movement()
+    {
+        Vector2 moveInput = playerInput.GetMovementVectorNormalized();
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 
     private void HandleJumpInput()
@@ -120,7 +126,15 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        if (!isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, reducedJumpForce);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+
 
         if (!isGrounded)
         {
@@ -179,7 +193,8 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void HandleTimers()
     {
-        // allows jumping just after leaving a ledge and slightly before landing
+        // allows jumping just after leaving a ledge
+        // player can fall off a ledge and will be able to jump 1x 
 
         if (isGrounded)
         {
@@ -210,7 +225,7 @@ public class NewPlayerMovement : MonoBehaviour
         RaycastHit2D middleHit = Physics2D.Raycast(middleSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
         RaycastHit2D lowerHit = Physics2D.Raycast(lowerSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
 
-        // Draw the ray
+        // Draw rayCast
         Debug.DrawRay(
             upperSurfaceCheck.position,
             rayDir * surfaceCheckDistance,
@@ -240,6 +255,7 @@ public class NewPlayerMovement : MonoBehaviour
 
         RaycastHit2D facingWall = Physics2D.Raycast(middleSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
         isFacingWall = facingWall;
+
         Debug.DrawRay(
             middleSurfaceCheck.position,
             rayDir * surfaceCheckDistance,
@@ -265,7 +281,7 @@ public class NewPlayerMovement : MonoBehaviour
     // Debug
     void OnDrawGizmosSelected()
     {
-        if (groundCheck)
+        if (isGrounded)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
