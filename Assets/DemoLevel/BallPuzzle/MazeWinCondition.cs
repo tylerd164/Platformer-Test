@@ -10,8 +10,8 @@ public class MazeWinCondition : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            controlTerminal.ExitMiniGame();
             ballRb.position = ballSpawnPoint.position;
+            controlTerminal.MiniGameOverUI();
         }
     }
 }

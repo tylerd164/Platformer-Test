@@ -4,6 +4,8 @@ public class BatMovementTesting : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private Transform ballSpawnPoint;
+    [SerializeField] private GameObject miniGameOverUIMaze;
+    [SerializeField] private PlayerStateController playerState;
 
     private Rigidbody2D ballRb;
     private Vector2 movement;
@@ -23,6 +25,7 @@ public class BatMovementTesting : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!miniGameOverUIMaze.activeSelf)
         ballRb.MovePosition(ballRb.position + movement * speed * Time.fixedDeltaTime);
     }
 

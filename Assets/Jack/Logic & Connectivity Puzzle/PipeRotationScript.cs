@@ -42,7 +42,7 @@ public class PipeRotationScript : MonoBehaviour
         }    
     }
     
-    private void OnMouseDown()
+    public void PipeRotateFunction()
     {
         transform.Rotate(new Vector3(0,0,90));
     

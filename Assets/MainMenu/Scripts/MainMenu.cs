@@ -3,10 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private const string DEMOLEVEL = "DemoLevel";
-    public void PlayGame()
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject levelSelect;
+    [SerializeField] private UINavController uiNavController;
+    public void SelectLevel()
     {
-        SceneManager.LoadScene(DEMOLEVEL);
+        mainMenu.SetActive(false);
+        levelSelect.SetActive(true);
+        uiNavController.RestSelectedButton();
     }
 
     public void Options()

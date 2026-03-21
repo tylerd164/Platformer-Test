@@ -9,10 +9,7 @@ public class PlayerStateController : MonoBehaviour
     private const string JUMPING = "Jumping";
     public PlayerStates currentState { get;private set; }
 
-    //public bool isGrounded { get; set; }
     public bool jumpPressed { get; set; }
-    //public bool sprintPressed { get; set; }
-    //public bool wallCollision { get; set; }
     public bool isIdle { get; set; }
     public bool interactButtonPressed { get; set; }
     public bool pauseButtonPressed { get; set; }

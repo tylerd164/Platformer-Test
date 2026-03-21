@@ -22,5 +22,6 @@ public class PauseMenu : MonoBehaviour
         playerInput.ResumeGame(); // resets the pause logic 
         SceneManager.LoadScene(MAINMENU);
     }
+
 }
  

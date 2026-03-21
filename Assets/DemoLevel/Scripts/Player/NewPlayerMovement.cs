@@ -1,4 +1,4 @@
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Windows;
@@ -16,6 +16,7 @@ public class NewPlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 16f;
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float fallLimit = -25f;
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float jumpBufferTime = 0.1f;
 
@@ -25,15 +26,17 @@ public class NewPlayerMovement : MonoBehaviour
 
     [Header("Enviroment Check")]
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private Transform wallCheck;
+    [SerializeField] private Transform upperSurfaceCheck;
+    [SerializeField] private Transform lowerSurfaceCheck;
     [SerializeField] private float groundRadius = 0.2f;
-    [SerializeField] private float wallCheckDistance = 0.5f;
+    [SerializeField] private float surfaceCheckDistance = 0.5f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
 
     private Rigidbody2D rb;
+    private Collider2D playerCollider;
 
-    private Vector2 moveInput;
+    private Vector2 rayDir;
     private Vector2 lastMoveDirection = Vector2.right;
     private float coyoteCounter;
     private float jumpBufferCounter;
@@ -41,12 +44,15 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
+    private bool givePlayerExtraJump;
+    private bool stopWalkInput;
     private int jumpsRemaining;
     private int wallDirection;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -57,7 +63,7 @@ public class NewPlayerMovement : MonoBehaviour
             CheckSurroundings();
             HandleJumpInput();
             HandleWallSlide();
-            ImprovedFalling();
+            ImprovedJumpingPhysics();
             HandleSpriteFlip();
         }
         
@@ -76,8 +82,11 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        moveInput = playerInput.GetMovementVectorNormalized();
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (!isWallSliding || jumpsRemaining < 1)
+        {
+            Vector2 moveInput = playerInput.GetMovementVectorNormalized();
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        }
     }
 
     private void HandleJumpInput()
@@ -89,7 +98,7 @@ public class NewPlayerMovement : MonoBehaviour
 
         if (jumpBufferCounter > 0)
         {
-            if (isWallSliding)
+            if (isWallSliding && jumpsRemaining > 0)
             {
                 WallJump();
                 Debug.Log("wall jump");
@@ -98,7 +107,6 @@ public class NewPlayerMovement : MonoBehaviour
             else if (coyoteCounter > 0 || jumpsRemaining > 0)
             {
                 Jump();
-                Debug.Log("normal jump");
                 jumpBufferCounter = 0;
             }
         }
@@ -121,12 +129,14 @@ public class NewPlayerMovement : MonoBehaviour
         if (isTouchingWall && !isGrounded && rb.linearVelocity.y < 0)
         {
             isWallSliding = true;
-            // if jumps remaining <2 give an extra jump
 
+            // sliding mechanic: 
             rb.linearVelocity = new Vector2(-wallDirection * 2f, Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed));
-        }
 
-        if (isGrounded)
+            if (!givePlayerExtraJump) return;
+            else { jumpsRemaining = maxJumps; givePlayerExtraJump = false; }
+        }
+        else
         {
             isWallSliding = false;
         }
@@ -134,32 +144,24 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void WallJump()
     {
-        if(jumpsRemaining > 0)
+        rb.linearVelocity = new Vector2(-wallDirection * wallJumpForce.x, wallJumpForce.y);
+
+        if (!isGrounded)
         {
-            float angle = 45f;
-            float force = 40f;
-
-            float rad = angle * Mathf.Deg2Rad;
-
-            Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-
-            rb.AddForce(direction * force, ForceMode2D.Impulse);
-
-            //rb.linearVelocity = new Vector2(-wallDirection * wallJumpForce.x, wallJumpForce.y);
             jumpsRemaining--;
-
-            isWallSliding = false;
+            coyoteCounter = 0;
         }
     }
 
-    private void ImprovedFalling()
+    private void ImprovedJumpingPhysics()
     {
         Vector2 vel = rb.linearVelocity;
 
+        // Improves falling Physics, adding upwards force when falling:
         if (vel.y < 0)
         {
             vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            vel.y = Mathf.Max(vel.y, -25f);
+            vel.y = Mathf.Max(vel.y, fallLimit);
         }
 
         rb.linearVelocity = vel;
@@ -193,40 +195,49 @@ public class NewPlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
-        Vector2 rayDir = playerSprite.flipX ? Vector2.left : Vector2.right;
-
-        RaycastHit2D hit = Physics2D.Raycast(wallCheck.position, rayDir, wallCheckDistance, wallLayer);
-
-        isTouchingWall = hit;
-
-        if (isTouchingWall)
+        if(!isWallSliding)
         {
-            wallDirection = (int)Mathf.Sign(hit.normal.x);
+            rayDir = playerSprite.flipX ? Vector2.left : Vector2.right;
         }
+
+        RaycastHit2D upperHit = Physics2D.Raycast(upperSurfaceCheck.position, rayDir, surfaceCheckDistance, wallLayer);
+        RaycastHit2D lowerHit = Physics2D.Raycast(lowerSurfaceCheck.position, rayDir, surfaceCheckDistance, wallLayer);
+
+        // Draw the ray
+        Debug.DrawRay(
+            upperSurfaceCheck.position,
+            rayDir * surfaceCheckDistance,
+            upperHit ? Color.green : Color.red);
+        Debug.DrawRay(
+            lowerSurfaceCheck.position,
+            rayDir * surfaceCheckDistance,
+            lowerHit ? Color.green : Color.red);
+
+        isTouchingWall = upperHit || lowerHit;
 
         if (isGrounded)
         {
             jumpsRemaining = maxJumps - 1;
+            givePlayerExtraJump = true;
         }
     }
 
     private void HandleSpriteFlip()
     {
-        if (!playerState.puzzleActive)
+        Vector2 moveInput = playerInput.GetMovementVectorNormalized();
+
+        if (Mathf.Abs(moveInput.x) > 0.01f)
+            lastMoveDirection = new Vector2(moveInput.x, 0f);
+
+        if (lastMoveDirection.x > 0f)
         {
-            if (Mathf.Abs(moveInput.x) > 0.01f)
-                lastMoveDirection = new Vector2(moveInput.x, 0f);
+            playerSprite.flipX = false;
+        }
 
-            if (lastMoveDirection.x > 0f)
-            {
-                playerSprite.flipX = false;
-            }
-                
 
-            else if (lastMoveDirection.x < 0f)
-            {
-                playerSprite.flipX = true;
-            }     
+        else if (lastMoveDirection.x < 0f)
+        {
+            playerSprite.flipX = true;
         }
     }
 

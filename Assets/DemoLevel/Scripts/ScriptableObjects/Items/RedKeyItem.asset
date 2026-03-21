@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4e2ed1869a65f4a83efd8b40a7b072, type: 3}
-  m_Name: Blue
+  m_Script: {fileID: 11500000, guid: d20cdc98ed32a224090db33301a41c27, type: 3}
+  m_Name: RedKeyItem
   m_EditorClassIdentifier: 
-  itemName: Blue
-  icon: {fileID: -3320418183320529682, guid: fd4e72024fc7be7498460c09538125ff, type: 3}
-  stackable: 1
-  maxStack: 5
-  collectionID: Blue
+  itemName: Key
+  icon: {fileID: -5209563076105967559, guid: 016ce3e0da05fbe4b851460385f67231, type: 3}
+  stackable: 0
+  maxStack: 1
+  keyID: Test

@@ -1,3 +1,4 @@
+using System.Data;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,7 +13,6 @@ public class PlayerInput : MonoBehaviour
     // Player movement actions
     private const string MOVE = "Move";
     private const string JUMP = "Jump";
-    //private const string SPRINT = "Sprint";
     private const string INTERACT = "Interact";
     private const string PAUSE = "Pause";
 
@@ -42,7 +42,6 @@ public class PlayerInput : MonoBehaviour
     // player movement actions
     private InputAction moveAction;
     private InputAction jumpAction;
-    //private InputAction sprintAction;
     private InputAction interactAction;
     private InputAction pauseAction;
 
@@ -70,7 +69,6 @@ public class PlayerInput : MonoBehaviour
         // player movement actions
         moveAction = playerMap.FindAction(MOVE);
         jumpAction = playerMap.FindAction(JUMP);
-        //sprintAction = playerMap.FindAction(SPRINT);
         interactAction = playerMap.FindAction(INTERACT);
         pauseAction = playerMap.FindAction(PAUSE);
 
@@ -88,12 +86,14 @@ public class PlayerInput : MonoBehaviour
         playerMap.Enable();
         uiMap.Enable();
         pauseAction.performed += OnPausePressed;
+        jumpAction.performed += OnJump;
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     private void OnDisable()
     {
         pauseAction.performed -= OnPausePressed;
+        jumpAction.performed -= OnJump;
         playerMap.Disable();
         uiMap.Disable();
     }
@@ -117,6 +117,19 @@ public class PlayerInput : MonoBehaviour
 
     #endregion
 
+    private void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.started) 
+        { 
+            playerState.jumpPressed = true;
+
+        }
+        if (context.canceled) 
+        {
+            playerState.jumpPressed = false; 
+        }
+    }
+
     #region Input Handling
 
     private void HandleMovementInput()
@@ -129,7 +142,8 @@ public class PlayerInput : MonoBehaviour
 
     private void OnPausePressed(InputAction.CallbackContext context)
     {
-        TogglePause();
+        if (!playerState.puzzleActive)
+            TogglePause();
     }
 
     #endregion
@@ -161,6 +175,7 @@ public class PlayerInput : MonoBehaviour
 
         playerMap.Disable();
         uiMap.Enable();
+        EventSystem.current.SetSelectedGameObject(firstButton);
 
         //Cursor.lockState = CursorLockMode.Confined;
         //Cursor.visible = true;

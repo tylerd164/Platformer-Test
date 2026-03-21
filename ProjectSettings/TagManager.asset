@@ -17,10 +17,10 @@ TagManager:
   - Background
   - Water
   - UI
-  - PlatformLayer
-  - WallLayer
-  - Player
+  - LevelLayer
   - 
+  - Player
+  - Moveable
   - 
   - 
   - 

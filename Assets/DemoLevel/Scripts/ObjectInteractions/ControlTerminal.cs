@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class ControlTerminal : MonoBehaviour
@@ -10,13 +11,15 @@ public class ControlTerminal : MonoBehaviour
     [SerializeField] private GameObject popup;
     [SerializeField] private GameObject miniGameUI;
     [SerializeField] private GameObject miniGame;
+    [SerializeField] private GameObject miniGameOverUI;
+    [SerializeField] private GameObject firstButtonMiniGameOverUI;
 
     [Header("KeyID")]
     [SerializeField] private string requiredKeyID;
     [SerializeField] private Inventory inventory;
 
     private bool playerInRange = false;
-    private bool canInteract;
+    private bool canInteract = false;
 
     void Update()
     {
@@ -28,8 +31,13 @@ public class ControlTerminal : MonoBehaviour
             {
                 Interact();
             }
+
             else { Debug.Log("cannot interact"); }
-            
+        }
+
+        if (playerState.puzzleActive && playerState.exitButtonPressed && miniGame.activeSelf)
+        {
+            MiniGameOverUI();
         }
     }
 
@@ -37,12 +45,7 @@ public class ControlTerminal : MonoBehaviour
     {
         miniGame.SetActive(true);
         miniGameUI.SetActive(true);
-        playerState.puzzleActive = true;
-
-        if (playerState.exitButtonPressed)
-        {
-            ExitMiniGame();
-        }
+        playerState.puzzleActive = true; 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,16 +66,28 @@ public class ControlTerminal : MonoBehaviour
         }
     }
 
+    public void MiniGameOverUI()
+    {
+        miniGameOverUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(firstButtonMiniGameOverUI);
+    }
+
     public void ExitMiniGame()
     {
-        playerState.puzzleActive = false;
         miniGame.SetActive(false);
         miniGameUI.SetActive(false);
+        miniGameOverUI.SetActive(false);
+        playerState.puzzleActive = false;
+    }
+
+    public void ResumeMiniGame()
+    {
+        miniGameOverUI.SetActive(false);
     }
 
     private void CheckItemID(Inventory inventory)
     {
-        canInteract = false;
+        if (canInteract) { return; }
 
         foreach (InventorySlot slot in inventory.slots)
         {
@@ -89,8 +104,8 @@ public class ControlTerminal : MonoBehaviour
                 break; // stop searching slots
             }
         }
-        //if (!canInteract)
-            //Debug.Log("Key not found");
+        if (!canInteract)
+         Debug.Log("Correct Key not found");
 
     }
 }
