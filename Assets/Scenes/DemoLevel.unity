@@ -2896,11 +2896,12 @@ MonoBehaviour:
   playerInput: {fileID: 181614140}
   playerState: {fileID: 1445628896}
   playerSprite: {fileID: 1445628894}
-  moveSpeed: 25
+  moveSpeed: 26
   jumpForce: 30
+  reducedJumpForce: 25
   maxJumps: 2
-  fallMultiplier: 5
-  fallLimit: -30
+  fallMultiplier: 7
+  fallLimit: -50
   coyoteTime: 0.1
   jumpBufferTime: 0.1
   wallSlideSpeed: 2.5
@@ -3083,7 +3084,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.68548, y: -56.389107, z: 0}
+  m_LocalPosition: {x: -83.664925, y: -56.389107, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13358,6 +13359,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2765126947191932018, guid: 5b716ee2bfa86b4499b630c5f4278f46, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6aa801c752fb345b47e771f5c2611d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
