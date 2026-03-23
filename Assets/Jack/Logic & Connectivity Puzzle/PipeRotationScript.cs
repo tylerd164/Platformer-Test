@@ -1,76 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PipeRotationScript : MonoBehaviour
 {
-    float[] rotations = { 0,90,180,270 };
+    public float[] correctRotations; // Supports multiple correct angles (e.g., straight pipes)
+    [SerializeField] private bool isPlaced = false;
 
-    public float[] correctRotation;
-    [SerializeField] bool isPlaced = false;
-
-    int PossibleRots = 1;
-
-    GameManager gameManager;
+    private GameManager gameManager;
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-    
+
     private void Start()
     {
-        PossibleRots = correctRotation.Length;
-        int rand = Random.Range(0, rotations.Length);
-        transform.eulerAngles = new Vector3(0,0,rotations[rand]);
-
-        if(PossibleRots > 1)
-        {
-            if(transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1])
-            {
-                isPlaced = true;
-                gameManager.correctMove();
-            } 
-        }
-        else
-        {
-            if(transform.eulerAngles.z == correctRotation[0])
-            {
-                isPlaced = true;
-                gameManager.correctMove();
-            } 
-        }    
+        // Randomize initial rotation
+        int rand = Random.Range(0, 4);
+        transform.eulerAngles = new Vector3(0, 0, rand * 90);
+        
+        CheckRotation();
     }
-    
-    public void PipeRotateFunction()
+
+    private void OnMouseDown()
     {
-        transform.Rotate(new Vector3(0,0,90));
-    
-        if(PossibleRots > 1)
+        // Rotate 90 degrees
+        transform.Rotate(new Vector3(0, 0, 90));
+        CheckRotation();
+    }
+
+    private void CheckRotation()
+    {
+        // Round the Z angle to the nearest whole number to avoid precision errors
+        // Use Mathf.Repeat to ensure 360 becomes 0
+        float currentZ = Mathf.Round(Mathf.Repeat(transform.eulerAngles.z, 360));
+
+        bool nowCorrect = false;
+        foreach (float angle in correctRotations)
         {
-            if(transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaced == false)
+            if (Mathf.Abs(currentZ - angle) < 0.1f)
             {
-                isPlaced = true;
-                gameManager.correctMove();
+                nowCorrect = true;
+                break;
             }
-            else if(isPlaced == true)
-            {
-                isPlaced = false; 
-       
-            }
-        }   
-        else
+        }
+
+        // Only trigger GameManager if the status actually CHANGED
+        if (nowCorrect && !isPlaced)
         {
-            if(transform.eulerAngles.z == correctRotation[0] && isPlaced == false)
-            {
-                isPlaced = true;
-                gameManager.correctMove();
-            }
-            else if(isPlaced == true)
-            {
-                isPlaced = false; 
-       
-            }
+            isPlaced = true;
+            gameManager.correctMove();
+        }
+        else if (!nowCorrect && isPlaced)
+        {
+            isPlaced = false;
+            gameManager.wrongMove(); // Make sure your GameManager has this!
         }
     }
 }
