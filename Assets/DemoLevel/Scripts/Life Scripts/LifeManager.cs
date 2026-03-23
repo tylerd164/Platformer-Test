@@ -36,6 +36,12 @@ public class LifeManager : MonoBehaviour
 
             audiomanager.audioInstance.Damage();
         }
+        if (collision.gameObject.name == "Obstacle")
+        {
+            playerHealth -= 1;
+
+            audiomanager.audioInstance.Damage();
+        }
     }
 
     public void Update()
