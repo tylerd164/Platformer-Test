@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedKeyItem
   m_EditorClassIdentifier: 
   itemName: Key
-  icon: {fileID: -5209563076105967559, guid: 016ce3e0da05fbe4b851460385f67231, type: 3}
+  icon: {fileID: 6341129232826188506, guid: 73af7b358ecf4654e8a56573b16a9134, type: 3}
   stackable: 0
   maxStack: 1
-  keyID: Test
+  keyID: RedKey

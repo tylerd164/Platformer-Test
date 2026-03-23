@@ -253,13 +253,15 @@ public class NewPlayerMovement : MonoBehaviour
         Vector2 moveInput = playerInput.GetMovementVectorNormalized();
         Vector2 facingDir = playerSprite.flipX ? Vector2.left : Vector2.right;
 
-        RaycastHit2D facingWall = Physics2D.Raycast(middleSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
-        isFacingWall = facingWall;
+        RaycastHit2D facingWallUpper = Physics2D.Raycast(upperSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
+        RaycastHit2D facingWallMiddle = Physics2D.Raycast(middleSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
+        RaycastHit2D facingWalllower = Physics2D.Raycast(lowerSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
+        isFacingWall = facingWallMiddle || facingWalllower || facingWallUpper;
 
         Debug.DrawRay(
             middleSurfaceCheck.position,
             rayDir * surfaceCheckDistance,
-            facingWall ? Color.green : Color.red);
+            isFacingWall ? Color.green : Color.red);
 
         if (Mathf.Abs(moveInput.x) > 0.01f)
             lastMoveDirection = new Vector2(moveInput.x, 0f);

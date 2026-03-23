@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PurpleKeyItem
   m_EditorClassIdentifier: 
   itemName: Key
-  icon: {fileID: 5931842347579807508, guid: a5de58c83f26c18409a125e3ed70b7a6, type: 3}
+  icon: {fileID: 523725589012890812, guid: aab0a4b24ceb6874c9a46e13b839cdf9, type: 3}
   stackable: 0
   maxStack: 1
   keyID: PurpleKey

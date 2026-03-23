@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 032f1f7b54a77d848b66dbcf96eb4f39
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2842102278885202876
+    second: red rock platform PNG_0
+  - first:
+      213: -3365975797293895756
+    second: red rock platform PNG_1
+  - first:
+      213: -554206723772777671
+    second: red rock platform PNG_2
+  - first:
+      213: 221007462143544379
+    second: red rock platform PNG_3
+  - first:
+      213: 6874878671541574940
+    second: red rock platform PNG_4
+  - first:
+      213: -7236860242386346257
+    second: red rock platform PNG_5
+  - first:
+      213: -3100614598797272865
+    second: red rock platform PNG_6
+  - first:
+      213: 2888270893658115236
+    second: red rock platform PNG_7
+  - first:
+      213: 5961290564667054338
+    second: red rock platform PNG_8
+  - first:
+      213: -3502730723827813511
+    second: red rock platform PNG_9
+  - first:
+      213: 7178735197703494619
+    second: red rock platform PNG_10
+  - first:
+      213: -4221779995461021323
+    second: red rock platform PNG_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: red rock platform PNG_0
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2723
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44428b31903de88d0800000000000000
+      internalID: -2842102278885202876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_1
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 1717
+        width: 4233
+        height: 1102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bf2cb798d6a941d0800000000000000
+      internalID: -3365975797293895756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_2
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 2484
+        width: 66
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93bf369cbef0f48f0800000000000000
+      internalID: -554206723772777671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_3
+      rect:
+        serializedVersion: 2
+        x: 4778
+        y: 2201
+        width: 267
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3cc6c9ad1d211300800000000000000
+      internalID: 221007462143544379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_4
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 1913
+        width: 85
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d15232ab9786f50800000000000000
+      internalID: 6874878671541574940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_5
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1310
+        width: 268
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fee1a6bb3f1819b90800000000000000
+      internalID: -7236860242386346257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_6
+      rect:
+        serializedVersion: 2
+        x: 2868
+        y: 1641
+        width: 241
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd85c4d337768f4d0800000000000000
+      internalID: -3100614598797272865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_7
+      rect:
+        serializedVersion: 2
+        x: 3785
+        y: 1240
+        width: 312
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ac87973313351820800000000000000
+      internalID: 2888270893658115236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_8
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 1671
+        width: 108
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2091edd2f22cab250800000000000000
+      internalID: 5961290564667054338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_9
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 1237
+        width: 252
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 973756607fcc36fc0800000000000000
+      internalID: -3502730723827813511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_10
+      rect:
+        serializedVersion: 2
+        x: 3783
+        y: 1565
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdbd5b3b0adff9360800000000000000
+      internalID: 7178735197703494619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red rock platform PNG_11
+      rect:
+        serializedVersion: 2
+        x: 4551
+        y: 1182
+        width: 220
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57112ba46793965c0800000000000000
+      internalID: -4221779995461021323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      red rock platform PNG_0: -2842102278885202876
+      red rock platform PNG_1: -3365975797293895756
+      red rock platform PNG_10: 7178735197703494619
+      red rock platform PNG_11: -4221779995461021323
+      red rock platform PNG_2: -554206723772777671
+      red rock platform PNG_3: 221007462143544379
+      red rock platform PNG_4: 6874878671541574940
+      red rock platform PNG_5: -7236860242386346257
+      red rock platform PNG_6: -3100614598797272865
+      red rock platform PNG_7: 2888270893658115236
+      red rock platform PNG_8: 5961290564667054338
+      red rock platform PNG_9: -3502730723827813511
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

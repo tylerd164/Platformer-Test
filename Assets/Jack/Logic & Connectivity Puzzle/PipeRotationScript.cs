@@ -53,7 +53,7 @@ public class PipeRotationScript : MonoBehaviour
         else if (!nowCorrect && isPlaced)
         {
             isPlaced = false;
-            gameManager.wrongMove(); // Make sure your GameManager has this!
+            //gameManager.wrongMove(); // Make sure your GameManager has this!
         }
     }
 }

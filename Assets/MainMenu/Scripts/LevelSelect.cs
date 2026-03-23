@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    private const string DEMOLEVEL = "DemoLevel";
+    private const string LEVEL1 = "Level1";
 
     [SerializeField] private GameObject levelSelect;
     [SerializeField] private GameObject mainMenu;
@@ -11,7 +11,7 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] private UINavController uiNavController;
     public void DemoLevel()
     {
-        SceneManager.LoadScene(DEMOLEVEL);
+        SceneManager.LoadScene(LEVEL1);
     }
 
     public void ComingSoon()
