@@ -18,8 +18,6 @@ public class NewPlayerMovement : MonoBehaviour
     [SerializeField] private int maxJumps = 2;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float fallLimit = -25f;
-    [SerializeField] private float coyoteTime = 0.1f;
-    [SerializeField] private float jumpBufferTime = 0.1f;
 
     [Header("Wall Movement")]
     [SerializeField] private float wallSlideSpeed = 1.5f;
@@ -40,7 +38,6 @@ public class NewPlayerMovement : MonoBehaviour
     private Vector2 rayDir;
     private Vector2 lastMoveDirection = Vector2.right;
 
-    private float coyoteCounter;
     private float jumpBufferCounter;
     private int jumpsRemaining;
     private int wallDirection;
@@ -61,7 +58,6 @@ public class NewPlayerMovement : MonoBehaviour
     {
         if(!playerState.puzzleActive)
         {
-            HandleTimers();
             CheckSurroundings();
             HandleJumpInput();
             HandleWallSlide();
@@ -105,21 +101,14 @@ public class NewPlayerMovement : MonoBehaviour
     {
         if (playerState.jumpPressed)
         {
-            jumpBufferCounter = jumpBufferTime;
-        }
-
-        if (jumpBufferCounter > 0)
-        {
             if (isWallSliding && jumpsRemaining > 0)
             {
                 WallJump();
                 Debug.Log("wall jump");
-                jumpBufferCounter = 0;
             }
-            else if (coyoteCounter > 0 || jumpsRemaining > 0)
+            else if (jumpsRemaining > 0)
             {
                 Jump();
-                jumpBufferCounter = 0;
             }
         }
     }
@@ -139,7 +128,6 @@ public class NewPlayerMovement : MonoBehaviour
         if (!isGrounded)
         {
             jumpsRemaining--;
-            coyoteCounter = 0;
         }
     }
 
@@ -169,7 +157,6 @@ public class NewPlayerMovement : MonoBehaviour
         if (!isGrounded)
         {
             jumpsRemaining--;
-            coyoteCounter = 0;
         }
     }
 
@@ -185,27 +172,6 @@ public class NewPlayerMovement : MonoBehaviour
         }
 
         rb.linearVelocity = vel;
-    }
-
-    #endregion
-
-    #region Timers
-
-    private void HandleTimers()
-    {
-        // allows jumping just after leaving a ledge
-        // player can fall off a ledge and will be able to jump 1x 
-
-        if (isGrounded)
-        {
-            coyoteCounter = coyoteTime;
-        }
-
-        else
-        {
-            coyoteCounter -= Time.deltaTime;
-            jumpBufferCounter -= Time.deltaTime;
-        }
     }
 
     #endregion
