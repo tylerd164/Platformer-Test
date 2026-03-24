@@ -33,9 +33,6 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private GameObject firstButton;
     [SerializeField] private GameObject pausedObject;
 
-    [Header("Idle Settings")]
-    [SerializeField] private float idleDelay = 2f;
-
     private InputActionMap playerMap;
     private InputActionMap uiMap;
 
@@ -190,10 +187,10 @@ public class PlayerInput : MonoBehaviour
         pauseMenu.SetActive(false);
         pausedObject.SetActive(false);
 
-        Time.timeScale = 1f;
-
         uiMap.Disable();
         playerMap.Enable();
+
+        Time.timeScale = 1f;
 
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
@@ -207,15 +204,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (HasPlayerInput())
         {
-            idleTimer = 0f;
             playerState.isIdle = false;
         }
         else
         {
-            idleTimer += Time.unscaledDeltaTime;
-
-            if (idleTimer >= idleDelay)
-                playerState.isIdle = true;
+             playerState.isIdle = true;
         }
     }
 

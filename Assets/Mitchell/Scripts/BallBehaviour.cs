@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using UnityEngine.SceneManagement;
 
 public class BallBehaviour : MonoBehaviour
@@ -9,13 +10,16 @@ public class BallBehaviour : MonoBehaviour
     public float speed = 500f;
     private AudioSource audioSource;
     public AudioClip collisionSound;
-    Vector2 spawnPosition;
+    public Transform spawnPosition;
+
+    [SerializeField] private GameObject miniGameOverUIMaze;
+    [SerializeField] private ControlTerminal controlTerminal;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Gets the Rigidbody2D component attached to the bat
         rb = GetComponent<Rigidbody2D>();
-        spawnPosition = new Vector2(-8, -4);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -28,20 +32,25 @@ public class BallBehaviour : MonoBehaviour
     //Force is added to the bat in the direction of the players input
     void FixedUpdate()
     {
-        rb.AddForce(inputDirection * speed * Time.deltaTime);
+        if (!miniGameOverUIMaze.activeSelf)
+            rb.AddForce(inputDirection * speed * Time.deltaTime);
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.name == "Wall_0")
+        if (other.CompareTag("MazeWall"))
         {
-            inputDirection = Vector2.zero;
-            this.transform.position = spawnPosition;
+            this.transform.position = spawnPosition.position;
+            rb.linearVelocity = Vector2.zero;
             audioSource.PlayOneShot(collisionSound);
         }
 
-        if (collision.gameObject.name == "ConductorStorage")
-        { SceneManager.LoadScene(""); }
+        if (other.CompareTag("ConductorStorage"))
+        {
+            this.transform.position = spawnPosition.position;
+            rb.linearVelocity = Vector2.zero;
+            controlTerminal.MiniGameOverUI();
+        }
     }
 }

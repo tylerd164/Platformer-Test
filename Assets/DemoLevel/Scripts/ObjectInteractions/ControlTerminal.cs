@@ -39,6 +39,11 @@ public class ControlTerminal : MonoBehaviour
         {
             MiniGameOverUI();
         }
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstButtonMiniGameOverUI);
+        }
     }
 
     void Interact()

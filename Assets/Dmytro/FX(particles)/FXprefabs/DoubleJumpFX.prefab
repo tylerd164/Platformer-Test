@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4019222007918996781}
   - component: {fileID: 7041567764385298064}
   - component: {fileID: 7234990002003052662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AirSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 7318038567203015771}
   - component: {fileID: 6681543187739720667}
   - component: {fileID: 1305500793403906114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnergyRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9793,7 +9793,7 @@ GameObject:
   - component: {fileID: 408723528563297220}
   - component: {fileID: 8123556506234482641}
   - component: {fileID: 9204614839394400885}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DoubleJumpFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

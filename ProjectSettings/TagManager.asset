@@ -10,6 +10,8 @@ TagManager:
   - Ball
   - Wall
   - Enemy
+  - MazeWall
+  - ConductorStorage
   layers:
   - Default
   - TransparentFX

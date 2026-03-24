@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7038938054392619291}
   - component: {fileID: 4409267573378056850}
   - component: {fileID: 4452849643323082867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JumpFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

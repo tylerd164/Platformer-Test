@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2890554737201052503}
   - component: {fileID: 755625059855462201}
   - component: {fileID: 5678786672806345385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DustPuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 7829774577819942960}
   - component: {fileID: 3158632656185365759}
   - component: {fileID: 5544108709980208849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DustBits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9793,7 +9793,7 @@ GameObject:
   - component: {fileID: 4496765918474844298}
   - component: {fileID: 5427441081904761443}
   - component: {fileID: 9036935468875665698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LandingFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
