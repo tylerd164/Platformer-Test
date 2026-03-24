@@ -11363,6 +11363,7 @@ GameObject:
   - component: {fileID: 1645557124}
   - component: {fileID: 1645557127}
   - component: {fileID: 1645557128}
+  - component: {fileID: 1645557129}
   m_Layer: 8
   m_Name: Player (1)
   m_TagString: Player
@@ -11473,6 +11474,7 @@ MonoBehaviour:
   levelLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerFX: {fileID: 1645557129}
 --- !u!50 &1645557126
 Rigidbody2D:
   serializedVersion: 5
@@ -11557,6 +11559,23 @@ MonoBehaviour:
   healthUI3: {fileID: 0}
   healthUI4: {fileID: 0}
   healthUI5: {fileID: 0}
+--- !u!114 &1645557129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645557121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0661afd9b18ce8b468742274ad6d3f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpFX: {fileID: 8260427836693750369, guid: a3a32d00173f1174ab2abfd52f9533ca, type: 3}
+  doubleJumpFX: {fileID: 4111299074672869179, guid: 37884638ec965794cb8f0d34452f0b49, type: 3}
+  landingFX: {fileID: 6739581955026180970, guid: 0bb067c221503d84fbf21d27057ba63a, type: 3}
+  jumpOffset: {x: 0, y: -0.2, z: 0}
+  landingOffset: {x: 0, y: -0.1, z: 0}
 --- !u!1 &1653398800
 GameObject:
   m_ObjectHideFlags: 0

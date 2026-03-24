@@ -51,6 +51,10 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isFacingWall;
     private bool givePlayerExtraJump;
 
+    [Header("Player FX")]
+    [SerializeField] private PlayerFX playerFX;
+    private bool wasGrounded;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -129,10 +133,14 @@ public class NewPlayerMovement : MonoBehaviour
         if (!isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, reducedJumpForce);
+            //doublejump particle effect
+            playerFX?.PlayDoubleJumpFX();
         }
         else
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            //jump particle effect
+            playerFX?.PlayJumpFX();
         }
 
 
@@ -246,6 +254,13 @@ public class NewPlayerMovement : MonoBehaviour
             jumpsRemaining = maxJumps - 1;
             givePlayerExtraJump = true;
         }
+        //landing particle effect
+        if (isGrounded && !wasGrounded)
+        {
+            playerFX?.PlayLandingFX();
+        }
+
+        wasGrounded = isGrounded;
     }
 
     private void HandleSpriteFlip()
