@@ -1,6 +1,8 @@
 ﻿using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
 public class NewPlayerMovement : MonoBehaviour
@@ -32,10 +34,13 @@ public class NewPlayerMovement : MonoBehaviour
     [SerializeField] private float surfaceCheckDistance = 0.5f;
     [SerializeField] private LayerMask levelLayer;
 
+    [SerializeField] private Transform respawnPoint;
+
     private Rigidbody2D rb;
     private Collider2D playerCollider;
 
     private Vector2 rayDir;
+    private Vector2 jumpFail;
     private Vector2 lastMoveDirection = Vector2.right;
 
     private float jumpBufferCounter;
@@ -254,5 +259,14 @@ public class NewPlayerMovement : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Obstacle")
+        {
+            this.transform.position = respawnPoint.position;
+        }
+
     }
 }

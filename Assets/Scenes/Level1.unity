@@ -755,7 +755,7 @@ Transform:
   m_GameObject: {fileID: 61657291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.173108, y: -10.200191, z: -1.2140598}
+  m_LocalPosition: {x: -12.324828, y: -10.200191, z: -1.2140598}
   m_LocalScale: {x: 0.050673805, y: 0.13387507, z: 0.12161713}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2937,7 +2937,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.66007, y: -58.22358, z: 0}
+  m_LocalPosition: {x: -78.17892, y: -58.22358, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7160,7 +7160,7 @@ Transform:
   m_GameObject: {fileID: 1049965099}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.171524, y: -0.7737783, z: -1.2140598}
+  m_LocalPosition: {x: -0.3232442, y: -0.7737783, z: -1.2140598}
   m_LocalScale: {x: 0.050673805, y: 0.13387507, z: 0.12161713}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11379,7 +11379,7 @@ Transform:
   m_GameObject: {fileID: 1645557121}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.94, y: -12.71, z: 1.1656975}
+  m_LocalPosition: {x: 2.8, y: -12.71, z: 1.1656975}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -11460,8 +11460,6 @@ MonoBehaviour:
   maxJumps: 2
   fallMultiplier: 7
   fallLimit: -50
-  coyoteTime: 0.1
-  jumpBufferTime: 0.1
   wallSlideSpeed: 2.5
   wallJumpForce: {x: 25, y: 25}
   groundCheck: {fileID: 1871707898}
@@ -11473,6 +11471,7 @@ MonoBehaviour:
   levelLayer:
     serializedVersion: 2
     m_Bits: 64
+  respawnPoint: {fileID: 2038530699}
 --- !u!50 &1645557126
 Rigidbody2D:
   serializedVersion: 5
@@ -15103,6 +15102,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2038530698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038530699}
+  m_Layer: 0
+  m_Name: RespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2038530699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038530698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 63.6, y: -45.8, z: -0.5576579}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063874633
 GameObject:
   m_ObjectHideFlags: 0
@@ -15364,7 +15394,7 @@ Transform:
   m_GameObject: {fileID: 2120650609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.264132, y: -0.7737783, z: -1.2140598}
+  m_LocalPosition: {x: -8.415851, y: -0.7737783, z: -1.2140598}
   m_LocalScale: {x: 0.050673805, y: 0.13387507, z: 0.12161713}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16070,3 +16100,4 @@ SceneRoots:
   - {fileID: 1058225471}
   - {fileID: 1429944130}
   - {fileID: 1245170048}
+  - {fileID: 2038530699}
