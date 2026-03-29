@@ -33,14 +33,14 @@ public class LifeManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             playerHealth -= 1;
-
             audiomanager.audioInstance.Damage();
+            return;
         }
         if (collision.gameObject.name == "Obstacle")
         {
             playerHealth -= 1;
-
             audiomanager.audioInstance.Damage();
+            return;
         }
     }
 
@@ -114,9 +114,9 @@ public class LifeManager : MonoBehaviour
     }
     public void GameOver()
     {
-            isPlaying = false;
-            playerInput.PauseGame();
-            GameOverUI.SetActive(true);
+        isPlaying = false;
+        Time.timeScale = 0f;
+        GameOverUI.SetActive(true);
     }
 
 }

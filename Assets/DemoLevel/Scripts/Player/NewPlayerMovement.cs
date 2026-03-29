@@ -63,6 +63,11 @@ public class NewPlayerMovement : MonoBehaviour
         playerCollider = GetComponent<Collider2D>();
     }
 
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
+
     private void Update()
     {
         if(!playerState.puzzleActive)
@@ -266,6 +271,13 @@ public class NewPlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region
+    private void HandleAnimation()
+    {
+
+    }
+    #endregion
+
     // Debug
     void OnDrawGizmosSelected()
     {
@@ -284,4 +296,6 @@ public class NewPlayerMovement : MonoBehaviour
         }
 
     }
+
+
 }

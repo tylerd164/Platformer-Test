@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 70791be9643d4114a9e175c229de2941
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 581671302205820259
+    second: Idle-Walking_0
+  - first:
+      213: 7866103116297712818
+    second: Idle-Walking_1
+  - first:
+      213: -8091762238602855944
+    second: Idle-Walking_2
+  - first:
+      213: 5529470031608848430
+    second: Idle-Walking_3
+  - first:
+      213: 8513662537107988799
+    second: Idle-Walking_4
+  - first:
+      213: 843679446154819429
+    second: Idle-Walking_5
+  - first:
+      213: 8686783182191379624
+    second: Idle-Walking_6
+  - first:
+      213: 3956090268890035274
+    second: Idle-Walking_7
+  - first:
+      213: 7153771519575046836
+    second: Idle-Walking_8
+  - first:
+      213: -5659638748591148957
+    second: Idle-Walking_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Idle-Walking_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 338
+        width: 179
+        height: 240
+      alignment: 9
+      pivot: {x: 0.41997802, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d4400b7f2821800800000000000000
+      internalID: 581671302205820259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_1
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 335
+        width: 157
+        height: 251
+      alignment: 9
+      pivot: {x: 0.3905176, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4b48d9b130a2d60800000000000000
+      internalID: 7866103116297712818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_2
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 323
+        width: 152
+        height: 255
+      alignment: 9
+      pivot: {x: 0.47172928, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f93821bd1944bf80800000000000000
+      internalID: -8091762238602855944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_3
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 325
+        width: 161
+        height: 253
+      alignment: 9
+      pivot: {x: 0.44661888, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e20a63682bf9cbc40800000000000000
+      internalID: 5529470031608848430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_4
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 346
+        width: 218
+        height: 233
+      alignment: 9
+      pivot: {x: 0.49342948, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f316fdd58fa962670800000000000000
+      internalID: 8513662537107988799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_5
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 44
+        width: 152
+        height: 250
+      alignment: 9
+      pivot: {x: 0.39831758, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5673b5c7cf955bb00800000000000000
+      internalID: 843679446154819429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_6
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 46
+        width: 158
+        height: 247
+      alignment: 9
+      pivot: {x: 0.3458815, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4ca579747ad8870800000000000000
+      internalID: 8686783182191379624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_7
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 39
+        width: 130
+        height: 247
+      alignment: 9
+      pivot: {x: 0.48347285, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a44f198a32bd6e630800000000000000
+      internalID: 3956090268890035274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_8
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 32
+        width: 167
+        height: 254
+      alignment: 9
+      pivot: {x: 0.43995968, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bab3947b4d474360800000000000000
+      internalID: 7153771519575046836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle-Walking_9
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 41
+        width: 188
+        height: 247
+      alignment: 9
+      pivot: {x: 0.47333348, y: 0.51449805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36030315b8ce471b0800000000000000
+      internalID: -5659638748591148957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8c93567dc05e6b44dba7dfabcf519fa7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Idle-Walking_0: 581671302205820259
+      Idle-Walking_1: 7866103116297712818
+      Idle-Walking_2: -8091762238602855944
+      Idle-Walking_3: 5529470031608848430
+      Idle-Walking_4: 8513662537107988799
+      Idle-Walking_5: 843679446154819429
+      Idle-Walking_6: 8686783182191379624
+      Idle-Walking_7: 3956090268890035274
+      Idle-Walking_8: 7153771519575046836
+      Idle-Walking_9: -5659638748591148957
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
