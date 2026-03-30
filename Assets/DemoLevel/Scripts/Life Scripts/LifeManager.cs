@@ -1,6 +1,8 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class LifeManager : MonoBehaviour
 { 
@@ -25,7 +27,7 @@ public class LifeManager : MonoBehaviour
 
     private void Start()
     {
-        GameOverUI.SetActive(false);
+       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -116,7 +118,12 @@ public class LifeManager : MonoBehaviour
     {
         isPlaying = false;
         Time.timeScale = 0f;
-        GameOverUI.SetActive(true);
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("Level1");
     }
 
 }
