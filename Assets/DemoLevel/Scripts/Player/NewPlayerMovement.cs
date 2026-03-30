@@ -16,8 +16,6 @@ public class NewPlayerMovement : MonoBehaviour
     [Header("PlayerAnimation")]
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private SpriteRenderer playerSprite;
-    [SerializeField] private Sprite wallHang;
-    [SerializeField] private Sprite falling;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce = 16f;
@@ -45,14 +43,12 @@ public class NewPlayerMovement : MonoBehaviour
     private Collider2D playerCollider;
 
     private Vector2 rayDir;
-    private Vector2 jumpFail;
     private Vector2 lastMoveDirection = Vector2.right;
 
     private int jumpsRemaining;
     private int wallDirection;
 
     private bool isGrounded;
-    private bool isFalling;
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isFacingWall;

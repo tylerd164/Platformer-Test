@@ -120,7 +120,6 @@ public class LifeManager : MonoBehaviour
     public void GameOver()
     {
         isPlaying = false;
-<<<<<<< Updated upstream
         Time.timeScale = 0f;
         SceneManager.LoadScene("GameOver");
     }
@@ -128,10 +127,9 @@ public class LifeManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("Level1");
-=======
         //Time.timeScale = 0f;
         GameOverUI.SetActive(true);
->>>>>>> Stashed changes
+
     }
 
 }

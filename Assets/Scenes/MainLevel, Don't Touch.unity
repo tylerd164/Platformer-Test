@@ -14127,7 +14127,7 @@ Transform:
   m_GameObject: {fileID: 1592871634}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.66007, y: -58.22358, z: 0}
+  m_LocalPosition: {x: -83.69552, y: -58.22358, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15364,11 +15364,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6722065d004ffd149a94543fd1f3b022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlTerminal: {fileID: 0}
   PipesHolder: {fileID: 546436567}
   Pipes: []
   GameWinPanel: {fileID: 2003916910}
   totalPipes: 0
   correctedPipes: 0
+  winIntensity: 0.8
+  winDuration: 1.2
+  clickIntensity: 0.2
+  clickDuration: 0.1
 --- !u!4 &1751272979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2665762159802359915, guid: a618891302045a74baa0b2fa1ebb4e3a, type: 3}
@@ -18845,9 +18850,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21498f9bd6c78144b1444f79cc28021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 1418445672}
+  playerAnimation: {fileID: 2043924021}
   GameOverUI: {fileID: 36927215}
   isPlaying: 0
-  playerInput: {fileID: 1418445672}
   playerHealth: 5
   healthUI1: {fileID: 1633381318}
   healthUI2: {fileID: 876692467}
@@ -18941,8 +18947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1418445672}
   playerState: {fileID: 511364576}
-  playerSprite: {fileID: 511364578}
   moveSpeed: 25
+  playerAnimator: {fileID: 511364577}
+  playerSprite: {fileID: 511364578}
   jumpForce: 28
   reducedJumpForce: 23
   maxJumps: 2
