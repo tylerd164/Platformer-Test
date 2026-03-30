@@ -322,7 +322,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Obstacle")
+        if (collision.gameObject.name == "Debris")
         {
             this.transform.position = respawnPoint.position;
         }

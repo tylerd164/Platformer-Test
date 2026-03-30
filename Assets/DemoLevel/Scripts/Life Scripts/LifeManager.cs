@@ -19,6 +19,10 @@ public class LifeManager : MonoBehaviour
     public GameObject healthUI4;
     public GameObject healthUI5;
 
+    [Header("Damage / Invulnerability")]
+    [SerializeField, Tooltip("Seconds after taking damage during which further damage is ignored.")] 
+    private float damageCooldown = 1f;
+    private float lastDamageTime = -Mathf.Infinity;
 
     private void Awake()
     {
@@ -33,15 +37,21 @@ public class LifeManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Ignore further damage if still within the invulnerability window
+        if (Time.time - lastDamageTime < damageCooldown)
+            return;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             playerHealth -= 1;
             audiomanager.audioInstance.Damage();
+            lastDamageTime = Time.time;
         }
-        if (collision.gameObject.name == "Obstacle")
+        else if (collision.gameObject.name == "Debris")
         {
             playerHealth -= 1;
             audiomanager.audioInstance.Damage();
+            lastDamageTime = Time.time;
             return;
         }
     }
