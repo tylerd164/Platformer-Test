@@ -9,10 +9,15 @@ public class NewPlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerStateController playerState;
-    [SerializeField] private SpriteRenderer playerSprite;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 12f;
+
+    [Header("PlayerAnimation")]
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private Sprite wallHang;
+    [SerializeField] private Sprite falling;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce = 16f;
@@ -43,11 +48,11 @@ public class NewPlayerMovement : MonoBehaviour
     private Vector2 jumpFail;
     private Vector2 lastMoveDirection = Vector2.right;
 
-    private float jumpBufferCounter;
     private int jumpsRemaining;
     private int wallDirection;
 
     private bool isGrounded;
+    private bool isFalling;
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isFacingWall;
@@ -77,6 +82,7 @@ public class NewPlayerMovement : MonoBehaviour
             HandleWallSlide();
             ImprovedJumpingPhysics();
             HandleSpriteFlip();
+            PlayerAnimation();
         }
         
     }
@@ -118,7 +124,6 @@ public class NewPlayerMovement : MonoBehaviour
             if (isWallSliding && jumpsRemaining > 0)
             {
                 WallJump();
-                Debug.Log("wall jump");
             }
             else if (jumpsRemaining > 0)
             {
@@ -159,6 +164,7 @@ public class NewPlayerMovement : MonoBehaviour
             // sliding mechanic: 
             rb.linearVelocity = new Vector2(-wallDirection * 2f, Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed));
 
+            // resets player jumps once. Contact with ground resets givePlayerExtraJump. 
             if (!givePlayerExtraJump) return;
             else { jumpsRemaining = maxJumps; givePlayerExtraJump = false; }
         }
@@ -199,11 +205,25 @@ public class NewPlayerMovement : MonoBehaviour
     private void CheckSurroundings()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, levelLayer);
+        Vector2 moveInput = playerInput.GetMovementVectorNormalized();
 
         if(!isWallSliding)
         {
-            rayDir = playerSprite.flipX ? Vector2.left : Vector2.right;
+            if (Mathf.Abs(moveInput.x) > 0.01f)
+                lastMoveDirection = new Vector2(moveInput.x, 0f);
+
+            if (lastMoveDirection.x > 0f)
+            {
+                rayDir = Vector2.right;
+            }
+
+
+            else if (lastMoveDirection.x < 0f)
+            {
+                rayDir = Vector2.left;
+            }
         }
+       
 
         RaycastHit2D upperHit = Physics2D.Raycast(upperSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
         RaycastHit2D middleHit = Physics2D.Raycast(middleSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
@@ -257,24 +277,40 @@ public class NewPlayerMovement : MonoBehaviour
         if (Mathf.Abs(moveInput.x) > 0.01f)
             lastMoveDirection = new Vector2(moveInput.x, 0f);
 
-        if (lastMoveDirection.x > 0f)
+        if (isWallSliding && jumpsRemaining == 0 || !isWallSliding)
         {
-            playerSprite.flipX = false;
-        }
+            if (lastMoveDirection.x > 0f)
+            {
+                playerSprite.flipX = false;
+            }
 
 
-        else if (lastMoveDirection.x < 0f)
-        {
-            playerSprite.flipX = true;
+            else if (lastMoveDirection.x < 0f)
+            {
+                playerSprite.flipX = true;
+            }
         }
     }
 
     #endregion
 
-    #region
-    private void HandleAnimation()
-    {
+    #region Character Animation
 
+    private void PlayerAnimation()
+    {
+        Vector2 vel = rb.linearVelocity;
+
+        playerAnimator.SetBool("isWalking", rb.linearVelocity.x > 0.1f || rb.linearVelocity.x < -0.1f);
+        playerAnimator.SetBool("isGrounded", isGrounded);
+        playerAnimator.SetBool("isWallSliding", isWallSliding);
+        playerAnimator.SetFloat("isFalling", vel.y);
+        playerAnimator.SetFloat("isJumping", vel.y);
+    }
+
+    public void PlayerDeathAnimation()
+    {
+        playerAnimator.SetTrigger("Die");
+        playerAnimator.SetBool("isDead", true);
     }
     #endregion
 
@@ -296,6 +332,4 @@ public class NewPlayerMovement : MonoBehaviour
         }
 
     }
-
-
 }

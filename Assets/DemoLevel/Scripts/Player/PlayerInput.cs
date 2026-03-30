@@ -212,7 +212,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private bool HasPlayerInput()
+    public bool HasPlayerInput()
     {
         return
             Mathf.Abs(inputValue.x) > 0.01f ||

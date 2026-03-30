@@ -5,11 +5,12 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class LifeManager : MonoBehaviour
-{ 
+{
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private NewPlayerMovement playerAnimation;
     public static LifeManager Instance;
     public GameObject GameOverUI;
     public bool isPlaying = false;
-    [SerializeField] private PlayerInput playerInput;
     public int playerHealth = 5;
 
     public GameObject healthUI1;
@@ -36,7 +37,6 @@ public class LifeManager : MonoBehaviour
         {
             playerHealth -= 1;
             audiomanager.audioInstance.Damage();
-            return;
         }
         if (collision.gameObject.name == "Obstacle")
         {
@@ -53,6 +53,9 @@ public class LifeManager : MonoBehaviour
 
         if (playerHealth <= 0)
         {
+            // play death animation
+            playerAnimation.PlayerDeathAnimation();
+            // have some delay before game over screen. 
             GameOver();
         }
     }
@@ -117,6 +120,7 @@ public class LifeManager : MonoBehaviour
     public void GameOver()
     {
         isPlaying = false;
+<<<<<<< Updated upstream
         Time.timeScale = 0f;
         SceneManager.LoadScene("GameOver");
     }
@@ -124,6 +128,10 @@ public class LifeManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("Level1");
+=======
+        //Time.timeScale = 0f;
+        GameOverUI.SetActive(true);
+>>>>>>> Stashed changes
     }
 
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b82cee056597f1e428ab56241613f5cf
+guid: 2c8148363bb7c4d4e858fd577abc0d93
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5800623818866235602
-    second: Wall-Hang_0
+      213: 6043360270707504098
+    second: WallSliding_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall-Hang_0
+      name: WallSliding_0
       rect:
         serializedVersion: 2
         x: 13
-        y: 42
-        width: 193
-        height: 233
+        y: 28
+        width: 189
+        height: 231
       alignment: 9
-      pivot: {x: 0.54688877, y: 0.5144981}
+      pivot: {x: 0.56073654, y: 0.54401463}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d8113751a4ff7050800000000000000
-      internalID: 5800623818866235602
+      spriteID: 2e3ba39a5245ed350800000000000000
+      internalID: 6043360270707504098
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 92523a7fafbdb324ca5464a5b8798294
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Wall-Hang_0: 5800623818866235602
+      WallSliding_0: 6043360270707504098
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

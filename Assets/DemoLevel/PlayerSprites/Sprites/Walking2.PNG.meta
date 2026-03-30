@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 1fff166c13e72b742a4aa01ef893f69c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5808871731165867117
+    second: Walking2_0
+  - first:
+      213: 4274565889805088318
+    second: Walking2_1
+  - first:
+      213: -8945375728451767677
+    second: Walking2_2
+  - first:
+      213: 2838906630905749958
+    second: Walking2_3
+  - first:
+      213: 1957497845351648339
+    second: Walking2_4
+  - first:
+      213: 7514140010919259022
+    second: Walking2_5
+  - first:
+      213: 6715942146560312245
+    second: Walking2_6
+  - first:
+      213: -2702015087344239622
+    second: Walking2_7
+  - first:
+      213: -2759529190243587548
+    second: Walking2_8
+  - first:
+      213: -952628256433910228
+    second: Walking2_9
+  - first:
+      213: -6956511377785840974
+    second: Walking2_10
+  - first:
+      213: 5877948117206459278
+    second: Walking2_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Walking2_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 22
+        width: 120
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393dc0eefedb26fa0800000000000000
+      internalID: -5808871731165867117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 20
+        width: 134
+        height: 243
+      alignment: 9
+      pivot: {x: 0.50647086, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3675d6770f425b30800000000000000
+      internalID: 4274565889805088318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 23
+        width: 158
+        height: 241
+      alignment: 9
+      pivot: {x: 0.46158552, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3823b3b6b24abd380800000000000000
+      internalID: -8945375728451767677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_3
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 24
+        width: 170
+        height: 240
+      alignment: 9
+      pivot: {x: 0.4489965, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c163a52a82d56720800000000000000
+      internalID: 2838906630905749958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_4
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 22
+        width: 186
+        height: 242
+      alignment: 9
+      pivot: {x: 0.47203013, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c07c84bed6a2b10800000000000000
+      internalID: 1957497845351648339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_5
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 36
+        width: 405
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8b646f3786974860800000000000000
+      internalID: 7514140010919259022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_6
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 26
+        width: 190
+        height: 236
+      alignment: 9
+      pivot: {x: 0.47718313, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b34dc9bcc1d33d50800000000000000
+      internalID: 6715942146560312245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_7
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 28
+        width: 179
+        height: 234
+      alignment: 9
+      pivot: {x: 0.4660924, y: 0.5144981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afbb91d0893808ad0800000000000000
+      internalID: -2702015087344239622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_8
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 24
+        width: 158
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42aa53472de24b9d0800000000000000
+      internalID: -2759529190243587548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_9
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 21
+        width: 140
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ec144e5a597c2f0800000000000000
+      internalID: -952628256433910228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_10
+      rect:
+        serializedVersion: 2
+        x: 1906
+        y: 259
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba9c1352c1857f90800000000000000
+      internalID: -6956511377785840974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking2_11
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 15
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e83644e7baaa29150800000000000000
+      internalID: 5877948117206459278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fc50f1d67be8d8545aff84b83e3f889d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Walking2_0: -5808871731165867117
+      Walking2_1: 4274565889805088318
+      Walking2_10: -6956511377785840974
+      Walking2_11: 5877948117206459278
+      Walking2_2: -8945375728451767677
+      Walking2_3: 2838906630905749958
+      Walking2_4: 1957497845351648339
+      Walking2_5: 7514140010919259022
+      Walking2_6: 6715942146560312245
+      Walking2_7: -2702015087344239622
+      Walking2_8: -2759529190243587548
+      Walking2_9: -952628256433910228
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
