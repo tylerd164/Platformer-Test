@@ -137,7 +137,7 @@ public class LifeManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("Level1");
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         GameOverUI.SetActive(true);
 
     }
