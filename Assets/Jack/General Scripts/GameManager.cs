@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ControlTerminal controlTerminal;
     public GameObject PipesHolder;
     public GameObject[] Pipes;
-    public GameObject GameWinPanel;
 
     [Header("Stats")]
     public int totalPipes = 0;
@@ -23,7 +22,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if(GameWinPanel != null) GameWinPanel.SetActive(false);
 
         totalPipes = PipesHolder.transform.childCount;
         
@@ -57,11 +55,9 @@ public class GameManager : MonoBehaviour
         if(correctedPipes == totalPipes)
         {
             Debug.Log("Puzzle Solved!");
-            
-            if(GameWinPanel != null)
-            {
-                GameWinPanel.SetActive(true);
-            }
+
+            controlTerminal.MiniGameOverUI();
+
 
             StartCoroutine(VibrateController(winIntensity, winDuration));
         }

@@ -7,6 +7,7 @@ public class ControlTerminal : MonoBehaviour
     private const string PLAYER = "Player";
 
     [SerializeField] private PlayerStateController playerState;
+    [SerializeField] private PlayerInput playerInput;
 
     [SerializeField] private GameObject popup;
     [SerializeField] private GameObject miniGameUI;

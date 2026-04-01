@@ -97,19 +97,26 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     { 
-        if (isPaused) return;
-
-        // Will defaul to fist button on UI
-        if (EventSystem.current.currentSelectedGameObject == null)
+        if (isPaused)
         {
-            EventSystem.current.SetSelectedGameObject(firstButton);
+            playerState.submitButtonPressed = submitAction.WasPressedThisFrame();
+
+            // Will defaul to fist button on UI
+            if (EventSystem.current.currentSelectedGameObject == null)
+            {
+                EventSystem.current.SetSelectedGameObject(firstButton);
+            }
         }
+       
+        else
+        {
+            playerState.exitButtonPressed = exitAction.WasPressedThisFrame();
+            playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
 
-        playerState.exitButtonPressed = exitAction.WasPressedThisFrame();
-        playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
 
-        HandleMovementInput();
-        HandleIdleState();
+            HandleMovementInput();
+        }
+        
     }
 
     #endregion
@@ -195,31 +202,6 @@ public class PlayerInput : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
     }
-
-    #endregion
-
-    #region Idle Logic
-
-    private void HandleIdleState()
-    {
-        if (HasPlayerInput())
-        {
-            playerState.isIdle = false;
-        }
-        else
-        {
-             playerState.isIdle = true;
-        }
-    }
-
-    public bool HasPlayerInput()
-    {
-        return
-            Mathf.Abs(inputValue.x) > 0.01f ||
-            Mathf.Abs(inputValue.y) > 0.01f ||
-            jumpAction.WasPressedThisFrame();
-    }
-
     #endregion
 
     public Vector2 GetMovementVectorNormalized()

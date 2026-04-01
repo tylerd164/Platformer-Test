@@ -5,13 +5,15 @@ using System.Collections.Generic;
 
 public class VirtualMouse : MonoBehaviour
 {
+    [SerializeField] private GameObject miniGameOverUIPipe;
+
     [Header("Movement Settings")]
     public float cursorSpeed = 800f;
     public string horizontalAxis = "Horizontal";
     public string verticalAxis = "Vertical";
 
     [Header("Click Settings")]
-    public KeyCode selectButton = KeyCode.JoystickButton0; 
+    public PlayerStateController playerState;
 
     private RectTransform _cursorTransform;
     private Image _cursorImage;
@@ -30,11 +32,14 @@ public class VirtualMouse : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
-
-        if (Input.GetKeyDown(selectButton))
+        if (!miniGameOverUIPipe.activeSelf)
         {
-            SimulateClick();
+            HandleMovement();
+
+            if (playerState.submitButtonPressed)
+            {
+                SimulateClick();
+            }
         }
     }
 
