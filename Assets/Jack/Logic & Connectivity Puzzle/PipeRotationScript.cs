@@ -4,14 +4,7 @@ public class PipeRotationScript : MonoBehaviour
 {
     public float[] correctRotations; // Supports multiple correct angles (e.g., straight pipes)
     [SerializeField] private bool isPlaced = false;
-
-    private GameManager gameManager;
-
-    private void Awake()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
+    [SerializeField] private GameManager gameManager;
     private void Start()
     {
         // Randomize initial rotation
@@ -21,7 +14,7 @@ public class PipeRotationScript : MonoBehaviour
         CheckRotation();
     }
 
-    private void OnMouseDown()
+    public void OnClick()
     {
         // Rotate 90 degrees
         transform.Rotate(new Vector3(0, 0, 90));

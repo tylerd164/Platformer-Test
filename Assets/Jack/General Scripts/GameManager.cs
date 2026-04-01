@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
 
             controlTerminal.MiniGameOverUI();
 
-
             StartCoroutine(VibrateController(winIntensity, winDuration));
         }
     }

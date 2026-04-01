@@ -111,7 +111,6 @@ public class PlayerInput : MonoBehaviour
             playerState.exitButtonPressed = exitAction.WasPressedThisFrame();
             playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
 
-
             HandleMovementInput();
         }
         

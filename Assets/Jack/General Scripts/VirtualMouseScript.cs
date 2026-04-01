@@ -63,32 +63,33 @@ public class VirtualMouse : MonoBehaviour
     }
 
     void SimulateClick()
-{
-    Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, _cursorTransform.position);
-
-    PointerEventData pointerData = new PointerEventData(EventSystem.current);
-    pointerData.position = screenPos;
-
-    List<RaycastResult> uiResults = new List<RaycastResult>();
-    EventSystem.current.RaycastAll(pointerData, uiResults);
-
-    if (uiResults.Count > 0)
     {
-        foreach (RaycastResult result in uiResults)
+        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(EventSystem.current.currentInputModule.inputOverride?.mousePosition 
+            != null ? Camera.main : Camera.main, _cursorTransform.position);
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = screenPos;
+
+        List<RaycastResult> uiResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, uiResults);
+
+        if (uiResults.Count > 0)
         {
-            ExecuteEvents.Execute(result.gameObject, pointerData, ExecuteEvents.pointerClickHandler);
-            return;
+            foreach (RaycastResult result in uiResults)
+            {
+                ExecuteEvents.Execute(result.gameObject, pointerData, ExecuteEvents.pointerClickHandler);
+                return;
+            }
+        }
+
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
+
+        Collider2D hit = Physics2D.OverlapPoint(worldPos2D);
+
+        if (hit != null)
+        {
+            hit.SendMessage("OnClick", SendMessageOptions.DontRequireReceiver);
         }
     }
-
-    Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-    Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
-
-    RaycastHit2D hit = Physics2D.Raycast(worldPos2D, Vector2.zero);
-
-    if (hit.collider != null)
-    {
-        hit.collider.gameObject.SendMessage("OnMouseDown", SendMessageOptions.DontRequireReceiver);
-    }
-}
 }
