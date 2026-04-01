@@ -67,6 +67,7 @@ public class NewPlayerMovement : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+        playerState.inputBlock = 0.1f;
     }
 
     private void Update()

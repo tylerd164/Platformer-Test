@@ -54,7 +54,6 @@ public class PlayerInput : MonoBehaviour
 
     private Vector2 inputValue;
     private float idleTimer;
-    private bool isPaused;
 
     #region Unity Lifecycle
 
@@ -81,7 +80,6 @@ public class PlayerInput : MonoBehaviour
     private void OnEnable()
     {
         playerMap.Enable();
-        uiMap.Enable();
         pauseAction.performed += OnPausePressed;
         jumpAction.performed += OnJump;
         EventSystem.current.SetSelectedGameObject(firstButton);
@@ -92,15 +90,15 @@ public class PlayerInput : MonoBehaviour
         pauseAction.performed -= OnPausePressed;
         jumpAction.performed -= OnJump;
         playerMap.Disable();
-        uiMap.Disable();
     }
 
     private void Update()
-    { 
-        if (isPaused)
-        {
-            playerState.submitButtonPressed = submitAction.WasPressedThisFrame();
+    {
 
+        if (playerState.inputBlock > 0f) {playerState.inputBlock -= Time.deltaTime; return; }
+
+        if (pauseMenu.activeSelf)
+        {
             // Will defaul to fist button on UI
             if (EventSystem.current.currentSelectedGameObject == null)
             {
@@ -156,7 +154,7 @@ public class PlayerInput : MonoBehaviour
 
     public void TogglePause()
     {
-        if (isPaused)
+        if (playerState.isPaused)
         {
             ResumeGame();
         }
@@ -169,9 +167,9 @@ public class PlayerInput : MonoBehaviour
 
     public void PauseGame()
     {
-        if (isPaused) return;
+        if (playerState.isPaused) return;
 
-        isPaused = true;
+        playerState.isPaused = true;
 
         pauseMenu.SetActive(true);
 
@@ -179,28 +177,36 @@ public class PlayerInput : MonoBehaviour
 
         playerMap.Disable();
         uiMap.Enable();
-        EventSystem.current.SetSelectedGameObject(firstButton);
 
-        //Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.visible = true;
+        EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     public void ResumeGame()
     {
-        if (!isPaused) return;
+        if (!playerState.isPaused) return;
 
-        isPaused = false;
+        playerState.isPaused = false;
 
         pauseMenu.SetActive(false);
         pausedObject.SetActive(false);
 
-        uiMap.Disable();
         playerMap.Enable();
+        uiMap.Disable();
 
         Time.timeScale = 1f;
+        playerState.inputBlock = 0.1f;
+    }
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+    public void MiniGameActive()
+    {
+        playerMap.Enable();
+        uiMap.Disable();
+    }
+
+    public void MiniGameUnactive()
+    {
+        playerMap.Disable();
+        uiMap.Enable();
     }
     #endregion
 

@@ -36,7 +36,7 @@ public class VirtualMouse : MonoBehaviour
         {
             HandleMovement();
 
-            if (playerState.submitButtonPressed)
+            if (playerState.interactButtonPressed)
             {
                 SimulateClick();
             }

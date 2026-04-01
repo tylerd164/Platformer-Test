@@ -10,6 +10,6 @@ public class PlayerStateController : MonoBehaviour
     public bool pauseButtonPressed { get; set; }
     public bool exitButtonPressed { get; set; }
     public bool puzzleActive { get; set; }
-
-    public bool submitButtonPressed { get; set; }
+    public bool isPaused { get; set; }
+    public float inputBlock {get; set;}
 }

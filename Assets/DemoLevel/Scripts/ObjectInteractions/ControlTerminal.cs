@@ -74,7 +74,9 @@ public class ControlTerminal : MonoBehaviour
 
     public void MiniGameOverUI()
     {
+        playerState.isPaused = true;
         miniGameOverUI.SetActive(true);
+        playerInput.MiniGameUnactive();
         EventSystem.current.SetSelectedGameObject(firstButtonMiniGameOverUI);
     }
 
@@ -83,12 +85,18 @@ public class ControlTerminal : MonoBehaviour
         miniGame.SetActive(false);
         miniGameUI.SetActive(false);
         miniGameOverUI.SetActive(false);
+        playerInput.MiniGameActive(); // Returns to Player Input Map
+        playerState.isPaused = false;
         playerState.puzzleActive = false;
+
+        playerState.inputBlock = 0.1f;
     }
 
     public void ResumeMiniGame()
     {
+        playerState.isPaused = false;
         miniGameOverUI.SetActive(false);
+        playerInput.MiniGameActive();
     }
 
     private void CheckItemID(Inventory inventory)
