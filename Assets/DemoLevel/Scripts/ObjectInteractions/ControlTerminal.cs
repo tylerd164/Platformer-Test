@@ -30,10 +30,15 @@ public class ControlTerminal : MonoBehaviour
 
             if (canInteract)
             {
-                Interact();
+                if(!miniGame.activeSelf)
+                {
+                    Interact();
+                    audiomanager.audioInstance.AccessTerminal();
+                }
+                
             }
 
-            else { Debug.Log("cannot interact"); }
+            else { Debug.Log("cannot interact"); audiomanager.audioInstance.ScanFail(); }
         }
 
         if (playerState.puzzleActive && playerState.exitButtonPressed && miniGame.activeSelf)

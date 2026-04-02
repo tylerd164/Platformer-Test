@@ -38,10 +38,15 @@ public class NewPlayerMovement : MonoBehaviour
     [SerializeField] private float surfaceCheckDistance = 0.5f;
     [SerializeField] private LayerMask levelLayer;
 
+    [Header("Vibration Settings - Double Jump")]
+    public float intensity = 0.8f;
+    public float duration = 0.8f;
+
     [SerializeField] private Transform respawnPoint;
 
     private Rigidbody2D rb;
     private Collider2D playerCollider;
+    public ControllerFeedBack feedBack;
 
     private Vector2 rayDir;
     private Vector2 lastMoveDirection = Vector2.right;
@@ -143,6 +148,7 @@ public class NewPlayerMovement : MonoBehaviour
     {
         if (!isGrounded)
         {
+            StartCoroutine(feedBack.VibrateController(intensity, duration));
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, reducedJumpForce);
             //doublejump particle effect
             playerFX?.PlayDoubleJumpFX();

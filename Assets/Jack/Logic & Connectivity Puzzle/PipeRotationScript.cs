@@ -18,6 +18,7 @@ public class PipeRotationScript : MonoBehaviour
     {
         // Rotate 90 degrees
         transform.Rotate(new Vector3(0, 0, 90));
+        audiomanager.audioInstance.ClickSound();
         CheckRotation();
     }
 

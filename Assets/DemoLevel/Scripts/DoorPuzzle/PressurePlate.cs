@@ -3,6 +3,7 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     [SerializeField] private const string DOOR_KEY = "DoorKey";
+    [SerializeField] Animator animator;
     public GameObject door;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,13 +24,14 @@ public class PressurePlate : MonoBehaviour
 
     void OpenDoor()
     {
-        door.SetActive(false);
+        animator.SetBool("isOpen", true);
+        audiomanager.audioInstance.OpenDoor();
         Debug.Log("Door Opened");
     }
 
     void CloseDoor()
     {
-        door.SetActive(true);
+        
         Debug.Log("Door Closed");
     }
 }

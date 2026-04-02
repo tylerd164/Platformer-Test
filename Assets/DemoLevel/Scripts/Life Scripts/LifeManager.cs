@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -14,10 +15,9 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private GameObject firstButtonGameOver;
 
     public static LifeManager Instance;
+    public ControllerFeedBack feedBack;
     public GameObject gameOverUI;
     public int playerHealth = 4;
-    public AudioClip damageSound;
-    private AudioSource audioSource;
 
     public GameObject healthUI1;
     public GameObject healthUI2;
@@ -25,7 +25,16 @@ public class LifeManager : MonoBehaviour
     public GameObject healthUI4;
 
     [Header("Damage / Invulnerability")]
-    [SerializeField, Tooltip("Seconds after taking damage during which further damage is ignored.")] 
+    [SerializeField, Tooltip("Seconds after taking damage during which further damage is ignored.")]
+
+    [Header("Vibration Settings - Death")]
+    public float deathIntensity = 0.8f;
+    public float deathDuration = 1.2f;
+
+    [Header("Vibration Settings - Damage")]
+    public float damageIntensity = 0.6f;
+    public float damageDuration = 0.5f;
+
     private float damageCooldown = 0.5f;
     private float lastDamageTime = -Mathf.Infinity;
 
@@ -33,7 +42,6 @@ public class LifeManager : MonoBehaviour
     private bool selected = false;
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         Instance = this;
     }
 
@@ -52,17 +60,9 @@ public class LifeManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             playerHealth -= 1;
-            //audiomanager.audioInstance.Damage();
-            audioSource.PlayOneShot(damageSound);
+            audiomanager.audioInstance.Damage();
+            StartCoroutine(feedBack.VibrateController(damageIntensity, damageDuration));
             lastDamageTime = Time.time;
-        }
-        else if (collision.gameObject.name == "Debris")
-        {
-            playerHealth -= 1;
-            //audiomanager.audioInstance.Damage();
-            audioSource.PlayOneShot(damageSound);
-            lastDamageTime = Time.time;
-            return;
         }
     }
 
@@ -83,6 +83,8 @@ public class LifeManager : MonoBehaviour
 
             if (deathTimer >= 4f)
             {
+                var gamepad = Gamepad.current;
+                gamepad.ResetHaptics();
                 playerState.isDead = false;
                 Time.timeScale = 0f;
                 gameOverUI.SetActive(true);
@@ -141,6 +143,7 @@ public class LifeManager : MonoBehaviour
     private void Death()
     {
         playerState.isPlaying = false;
+        StartCoroutine(feedBack.VibrateController(deathIntensity, deathDuration));
         playerAnimation.PlayerDeathAnimation();
     }
 

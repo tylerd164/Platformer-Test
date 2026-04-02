@@ -5,6 +5,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private ControlTerminal controlTerminal;
+    public ControllerFeedBack feedBack;
     public GameObject PipesHolder;
     public GameObject[] Pipes;
 
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
         
         if (correctedPipes < totalPipes)
         {
-            StartCoroutine(VibrateController(clickIntensity, clickDuration));
+            StartCoroutine(feedBack.VibrateController(clickIntensity, clickDuration));
         }
         
         CheckWinCondition();
@@ -58,18 +59,7 @@ public class GameManager : MonoBehaviour
 
             controlTerminal.MiniGameOverUI();
 
-            StartCoroutine(VibrateController(winIntensity, winDuration));
-        }
-    }
-
-    IEnumerator VibrateController(float intensity, float duration)
-    {
-        var gamepad = Gamepad.current;
-        if (gamepad != null)
-        {
-            gamepad.SetMotorSpeeds(intensity, intensity);
-            yield return new WaitForSeconds(duration);
-            gamepad.ResetHaptics();
+            StartCoroutine(feedBack.VibrateController(winIntensity, winDuration));
         }
     }
 

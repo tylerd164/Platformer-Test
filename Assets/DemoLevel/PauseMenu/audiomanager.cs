@@ -19,6 +19,9 @@ public class audiomanager : MonoBehaviour
     public AudioClip itempickup;
     public AudioClip puzzlefail;
     public AudioClip accessterminal;
+    public AudioClip clickSound;
+    public AudioClip openDoor;
+    public AudioClip scanFail;
 
 
     private void Awake()
@@ -54,6 +57,21 @@ public class audiomanager : MonoBehaviour
     public void AccessTerminal()
     {
         audioSource.PlayOneShot(accessterminal);
+    }
+
+    public void ClickSound()
+    {
+        audioSource.PlayOneShot(clickSound);
+    }
+
+    public void OpenDoor()
+    {
+        audioSource.PlayOneShot(openDoor);
+    }
+
+    public void ScanFail()
+    {
+        audioSource.PlayOneShot(scanFail);
     }
 
 
