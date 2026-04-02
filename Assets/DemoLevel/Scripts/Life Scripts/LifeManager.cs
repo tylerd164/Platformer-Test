@@ -1,38 +1,46 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class LifeManager : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerStateController playerState;
     [SerializeField] private NewPlayerMovement playerAnimation;
+    [SerializeField] private GameObject firstButtonGameOver;
+
     public static LifeManager Instance;
-    public GameObject GameOverUI;
-    public bool isPlaying = false;
-    public int playerHealth = 5;
+    public GameObject gameOverUI;
+    public int playerHealth = 4;
+    public AudioClip damageSound;
+    private AudioSource audioSource;
 
     public GameObject healthUI1;
     public GameObject healthUI2;
     public GameObject healthUI3;
     public GameObject healthUI4;
-    public GameObject healthUI5;
 
     [Header("Damage / Invulnerability")]
     [SerializeField, Tooltip("Seconds after taking damage during which further damage is ignored.")] 
-    private float damageCooldown = 1f;
+    private float damageCooldown = 0.5f;
     private float lastDamageTime = -Mathf.Infinity;
 
+    private float deathTimer = 0f;
+    private bool selected = false;
     private void Awake()
     {
-        isPlaying = true;
+        audioSource = GetComponent<AudioSource>();
         Instance = this;
     }
 
     private void Start()
     {
-       
+        playerState.isPlaying = true;
+        playerState.isDead = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,13 +52,15 @@ public class LifeManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             playerHealth -= 1;
-            audiomanager.audioInstance.Damage();
+            //audiomanager.audioInstance.Damage();
+            audioSource.PlayOneShot(damageSound);
             lastDamageTime = Time.time;
         }
         else if (collision.gameObject.name == "Debris")
         {
             playerHealth -= 1;
-            audiomanager.audioInstance.Damage();
+            //audiomanager.audioInstance.Damage();
+            audioSource.PlayOneShot(damageSound);
             lastDamageTime = Time.time;
             return;
         }
@@ -63,32 +73,37 @@ public class LifeManager : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            // play death animation
-            playerAnimation.PlayerDeathAnimation();
-            // have some delay before game over screen. 
-            GameOver();
+            playerState.isDead = true;
+            Death();
+        }
+
+        if (playerState.isDead)
+        {
+            deathTimer += Time.deltaTime;
+
+            if (deathTimer >= 4f)
+            {
+                playerState.isDead = false;
+                Time.timeScale = 0f;
+                gameOverUI.SetActive(true);
+
+                if (!selected)
+                {
+                    selected = true;
+                    EventSystem.current.SetSelectedGameObject(firstButtonGameOver);
+                }   
+            }
         }
     }
 
-
     public void Health()
     {
-        if (playerHealth >= 5)
+        if (playerHealth >= 4)
         {
             healthUI1.SetActive(true);
             healthUI2.SetActive(true);
             healthUI3.SetActive(true);
             healthUI4.SetActive(true);
-            healthUI5.SetActive(true);
-        }
-
-        if (playerHealth == 4)
-        {
-            healthUI1.SetActive(true);
-            healthUI2.SetActive(true);
-            healthUI3.SetActive(true);
-            healthUI4.SetActive(true);
-            healthUI5.SetActive(false);
         }
 
         if (playerHealth == 3)
@@ -97,7 +112,6 @@ public class LifeManager : MonoBehaviour
             healthUI2.SetActive(true);
             healthUI3.SetActive(true);
             healthUI4.SetActive(false);
-            healthUI5.SetActive(false);
         }
 
         if (playerHealth == 2)
@@ -106,7 +120,6 @@ public class LifeManager : MonoBehaviour
             healthUI2.SetActive(true);
             healthUI3.SetActive(false);
             healthUI4.SetActive(false);
-            healthUI5.SetActive(false);
         }
 
         if (playerHealth == 1)
@@ -115,7 +128,6 @@ public class LifeManager : MonoBehaviour
             healthUI2.SetActive(false);
             healthUI3.SetActive(false);
             healthUI4.SetActive(false);
-            healthUI5.SetActive(false);
         }
 
         if (playerHealth == 0)
@@ -124,22 +136,22 @@ public class LifeManager : MonoBehaviour
             healthUI2.SetActive(false);
             healthUI3.SetActive(false);
             healthUI4.SetActive(false);
-            healthUI5.SetActive(false);
         }
     }
-    public void GameOver()
+    private void Death()
     {
-        isPlaying = false;
-        Time.timeScale = 0f;
-        SceneManager.LoadScene("GameOver");
+        playerState.isPlaying = false;
+        playerAnimation.PlayerDeathAnimation();
     }
 
     public void Retry()
     {
         SceneManager.LoadScene("Level1");
-        Time.timeScale = 0f;
-        GameOverUI.SetActive(true);
+    }
 
+    public void Exit()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
 }

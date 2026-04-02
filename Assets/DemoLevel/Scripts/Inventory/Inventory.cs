@@ -6,10 +6,13 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] public int size = 20;                                           // Number of inventory slots
     [SerializeField] public List<InventorySlot> slots = new List<InventorySlot>();  // List that stores all InventorySlot objects,
-                                                                                   // Each slots holds: Item(InventorySlot), Amount(size)
-
+                                                                                    // Each slots holds: Item(InventorySlot), Amount(size)
+    public AudioClip pickupSound;
+    private AudioSource audioSource;
     private void Awake() // Creates the slots
     {
+        audioSource = GetComponent<AudioSource>();
+
         for (int i = 0; i < size; i++)         // Creates size number of empty InventorySlots, Adds them to the slot list
         {
             slots.Add(new InventorySlot());
@@ -25,7 +28,8 @@ public class Inventory : MonoBehaviour
             {
                 if (slot.item == item && slot.amount < item.maxStack)  // Checks if slot contains the same item, and stack is not full 
                 {
-                    slot.amount++;                                    // If true, Increase the stack count, exit function
+                    slot.amount++;
+                    audioSource.PlayOneShot(pickupSound);             // If true, Increase the stack count, exit function
                     return true;
                 }
             }
@@ -38,6 +42,7 @@ public class Inventory : MonoBehaviour
             { 
                 slot.item = item;                                   // place item in slot, set slot amount to 1, exit function
                 slot.amount = 1;
+                audioSource.PlayOneShot(pickupSound);
                 return true;
             }
         }

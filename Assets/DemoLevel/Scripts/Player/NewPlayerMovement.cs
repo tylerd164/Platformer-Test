@@ -12,6 +12,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 12f;
+    [SerializeField] private float force = 2f;
 
     [Header("PlayerAnimation")]
     [SerializeField] private Animator playerAnimator;
@@ -53,6 +54,7 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isWallSliding;
     private bool isFacingWall;
     private bool givePlayerExtraJump;
+    private bool deathTriggered;
 
     [Header("Player FX")]
     [SerializeField] private PlayerFX playerFX;
@@ -66,13 +68,13 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         playerState.inputBlock = 0.1f;
     }
 
     private void Update()
     {
-        if(!playerState.puzzleActive)
+        if(!playerState.puzzleActive && playerState.isPlaying)
         {
             CheckSurroundings();
             HandleJumpInput();
@@ -86,9 +88,17 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!playerState.puzzleActive)
+        if (!playerState.puzzleActive && playerState.isPlaying)
         {
             HandleMovement();
+        }
+
+        if (playerState.isDead && !deathTriggered)
+        {
+            deathTriggered = true;
+            playerState.isDead = false;
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.up * force;
         }
 
     }
@@ -163,7 +173,11 @@ public class NewPlayerMovement : MonoBehaviour
 
             // resets player jumps once. Contact with ground resets givePlayerExtraJump. 
             if (!givePlayerExtraJump) return;
-            else { jumpsRemaining = maxJumps; givePlayerExtraJump = false; }
+            else 
+            { 
+                jumpsRemaining = maxJumps; 
+                givePlayerExtraJump = false;
+            }
         }
         else
         {
@@ -226,7 +240,7 @@ public class NewPlayerMovement : MonoBehaviour
         RaycastHit2D middleHit = Physics2D.Raycast(middleSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
         RaycastHit2D lowerHit = Physics2D.Raycast(lowerSurfaceCheck.position, rayDir, surfaceCheckDistance, levelLayer);
 
-        // Draw rayCast
+        // Draw rayCast for debugging
         Debug.DrawRay(
             upperSurfaceCheck.position,
             rayDir * surfaceCheckDistance,
@@ -311,7 +325,7 @@ public class NewPlayerMovement : MonoBehaviour
     }
     #endregion
 
-    // Debug
+    // Debug - Ground Detection
     void OnDrawGizmosSelected()
     {
         if (isGrounded)

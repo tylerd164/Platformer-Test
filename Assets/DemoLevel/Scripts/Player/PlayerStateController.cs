@@ -12,4 +12,7 @@ public class PlayerStateController : MonoBehaviour
     public bool puzzleActive { get; set; }
     public bool isPaused { get; set; }
     public float inputBlock {get; set;}
+
+    public bool isPlaying { get; set; }
+    public bool isDead { get; set; }
 }

@@ -33,7 +33,10 @@ public class BallBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         if (!miniGameOverUIMaze.activeSelf)
+        {
             rb.AddForce(inputDirection * speed * Time.deltaTime);
+            rb.linearVelocity = new Vector2(inputDirection.x *  5, inputDirection.y * 5);   
+        }
     }
 
 
