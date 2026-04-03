@@ -15,4 +15,6 @@ public class PlayerStateController : MonoBehaviour
 
     public bool isPlaying { get; set; }
     public bool isDead { get; set; }
+
+    public bool submitButtonPressed { get; set; }
 }

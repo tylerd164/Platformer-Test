@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class VirtualMouse : MonoBehaviour
 {
-    [SerializeField] private GameObject miniGameOverUIPipe;
+    [SerializeField] private GameObject miniGamePipe;
 
     [Header("Movement Settings")]
     public float cursorSpeed = 800f;
@@ -32,11 +32,11 @@ public class VirtualMouse : MonoBehaviour
 
     void Update()
     {
-        if (!miniGameOverUIPipe.activeSelf)
+        if (miniGamePipe.activeSelf)
         {
             HandleMovement();
 
-            if (playerState.interactButtonPressed)
+            if (playerState.submitButtonPressed) // A button
             {
                 SimulateClick();
             }

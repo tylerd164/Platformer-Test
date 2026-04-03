@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
@@ -93,6 +94,11 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (playerState.puzzleActive)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+
         if (!playerState.puzzleActive && playerState.isPlaying)
         {
             HandleMovement();
@@ -127,11 +133,21 @@ public class NewPlayerMovement : MonoBehaviour
     {
         Vector2 moveInput = playerInput.GetMovementVectorNormalized();
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+
+        if (isGrounded && rb.linearVelocity.x != 0)
+        {
+            audiomanager.audioInstance.Walking();
+        }
+
+        else
+        {
+            audiomanager.audioInstance.StopWalking();
+        }
     }
 
     private void HandleJumpInput()
     {
-        if (playerState.jumpPressed)
+        if (playerState.jumpPressed && !playerState.puzzleActive)
         {
             if (isWallSliding && jumpsRemaining > 0)
             {
@@ -312,7 +328,6 @@ public class NewPlayerMovement : MonoBehaviour
     #endregion
 
     #region Character Animation
-
     private void PlayerAnimation()
     {
         Vector2 vel = rb.linearVelocity;

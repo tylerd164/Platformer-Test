@@ -1,10 +1,12 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
 
     public GameObject virtualCamera;
-//checks if player enters the camera's collision and if so it activates that camera and pans the screen to it
+
+    //checks if player enters the camera's collision and if so it activates that camera and pans the screen to it
     private void OnTriggerEnter2D(Collider2D other)
     {
     //the player game object must have the "Player" tag or this wont work, && !other.isTrigger makes sure the collider is not a trigger

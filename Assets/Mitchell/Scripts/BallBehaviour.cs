@@ -12,8 +12,8 @@ public class BallBehaviour : MonoBehaviour
     public AudioClip collisionSound;
     public Transform spawnPosition;
 
-    [SerializeField] private GameObject miniGameOverUIMaze;
     [SerializeField] private ControlTerminal controlTerminal;
+    [SerializeField] private GameObject miniGame;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,7 +32,7 @@ public class BallBehaviour : MonoBehaviour
     //Force is added to the bat in the direction of the players input
     void FixedUpdate()
     {
-        if (!miniGameOverUIMaze.activeSelf)
+        if (miniGame.activeSelf)
         {
             rb.AddForce(inputDirection * speed * Time.deltaTime);
             rb.linearVelocity = new Vector2(inputDirection.x *  5, inputDirection.y * 5);   
@@ -53,7 +53,7 @@ public class BallBehaviour : MonoBehaviour
         {
             this.transform.position = spawnPosition.position;
             rb.linearVelocity = Vector2.zero;
-            controlTerminal.MiniGameOverUI();
+            controlTerminal.ExitMiniGame();
         }
     }
 }

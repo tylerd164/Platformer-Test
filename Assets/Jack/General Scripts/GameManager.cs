@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Puzzle Solved!");
 
-            controlTerminal.MiniGameOverUI();
+            controlTerminal.ExitMiniGame();
 
             StartCoroutine(feedBack.VibrateController(winIntensity, winDuration));
         }

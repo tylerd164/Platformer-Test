@@ -6,11 +6,11 @@ public class audiomanager : MonoBehaviour
 
     [Header("--- AudioSource ---")]
     [SerializeField] AudioSource musicSource;
+    public AudioSource audioSource;
+    public AudioSource walkingAudioSource;
 
     [Header("--- AudioClip ---")]
     public AudioClip background;
-
-    public AudioSource audioSource;
 
     public static audiomanager audioInstance;
 
@@ -44,7 +44,18 @@ public class audiomanager : MonoBehaviour
     }
     public void Walking()
     {
-        audioSource.PlayOneShot(walking);
+        if (!walkingAudioSource.isPlaying)
+        {
+            walkingAudioSource.clip = walking;
+            walkingAudioSource.loop = false;
+            walkingAudioSource.Play();
+        }
+        
+    }
+
+    public void StopWalking()
+    {
+        walkingAudioSource.Stop();
     }
     public void ItemPickup()
     {

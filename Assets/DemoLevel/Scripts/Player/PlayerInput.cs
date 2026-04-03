@@ -80,22 +80,36 @@ public class PlayerInput : MonoBehaviour
     private void OnEnable()
     {
         playerMap.Enable();
+        uiMap.Enable();
         pauseAction.performed += OnPausePressed;
-        jumpAction.performed += OnJump;
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     private void OnDisable()
     {
         pauseAction.performed -= OnPausePressed;
-        jumpAction.performed -= OnJump;
         playerMap.Disable();
+        uiMap.Disable();
     }
 
     private void Update()
     {
 
-        if (playerState.inputBlock > 0f) {playerState.inputBlock -= Time.deltaTime; return; }
+        if (playerState.inputBlock > 0f) 
+        {
+            playerState.inputBlock -= Time.deltaTime; 
+            return; 
+        }
+
+        if (playerState.inputBlock < 0.1f)
+        {
+            playerState.submitButtonPressed = submitAction.WasPressedThisFrame();
+            playerState.jumpPressed = jumpAction.WasPressedThisFrame();
+            playerState.exitButtonPressed = cancelAction.WasPressedThisFrame();
+            playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
+
+            HandleMovementInput();
+        }
 
         if (pauseMenu.activeSelf)
         {
@@ -105,31 +119,9 @@ public class PlayerInput : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(firstButton);
             }
         }
-       
-        else
-        {
-            playerState.exitButtonPressed = exitAction.WasPressedThisFrame();
-            playerState.interactButtonPressed = interactAction.WasPressedThisFrame();
-
-            HandleMovementInput();
-        }
-        
     }
 
     #endregion
-
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.started) 
-        { 
-            playerState.jumpPressed = true;
-
-        }
-        if (context.canceled) 
-        {
-            playerState.jumpPressed = false; 
-        }
-    }
 
     #region Input Handling
 
@@ -196,13 +188,13 @@ public class PlayerInput : MonoBehaviour
         playerState.inputBlock = 0.1f;
     }
 
-    public void MiniGameActive()
+    public void MiniGameUnactive()
     {
         playerMap.Enable();
         uiMap.Disable();
     }
 
-    public void MiniGameUnactive()
+    public void MiniGameActive()
     {
         playerMap.Disable();
         uiMap.Enable();

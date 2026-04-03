@@ -11,7 +11,7 @@ public class MazeWinCondition : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             ballRb.position = ballSpawnPoint.position;
-            controlTerminal.MiniGameOverUI();
+            controlTerminal.ExitMiniGame();
         }
     }
 }

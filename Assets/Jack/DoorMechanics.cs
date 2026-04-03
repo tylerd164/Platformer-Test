@@ -1,27 +1,27 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
-public class ControlTerminal : MonoBehaviour
+public class DoorMechanics : MonoBehaviour
 {
     private const string PLAYER = "Player";
 
     [SerializeField] private PlayerStateController playerState;
     [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private ScreenFade screenFade;
 
-    [SerializeField] private GameObject popup;
-    [SerializeField] private GameObject miniGameUI;
-    [SerializeField] private GameObject miniGame;
+    [Header("Door Settings")]
+    [SerializeField] GameObject door; 
+    [SerializeField] Animator animator;
+
 
     [Header("KeyID")]
     [SerializeField] private string requiredKeyID;
     [SerializeField] private Inventory inventory;
 
+    [SerializeField] private GameObject popup;
+
     private bool playerInRange = false;
     private bool canInteract = false;
 
-    void Update()
+    private void Update()
     {
         if (playerInRange && playerState.interactButtonPressed)
         {
@@ -29,30 +29,14 @@ public class ControlTerminal : MonoBehaviour
 
             if (canInteract)
             {
-                if(!miniGame.activeSelf)
-                {
-                    Interact();
-                    audiomanager.audioInstance.AccessTerminal();
-                }
-                
+                canInteract = false;
+                animator.SetBool("isOpen", true);
+                audiomanager.audioInstance.OpenDoor();
+                audiomanager.audioInstance.AccessTerminal();
             }
 
             else { Debug.Log("cannot interact"); audiomanager.audioInstance.ScanFail(); }
         }
-
-        if (playerState.puzzleActive && playerState.exitButtonPressed && miniGame.activeSelf)
-        {
-            ExitMiniGame();
-        }
-    }
-
-    void Interact()
-    {
-        StartCoroutine(screenFade.FadeOut());
-        playerInput.MiniGameActive();
-        miniGame.SetActive(true);
-        miniGameUI.SetActive(true);
-        playerState.puzzleActive = true; 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -72,19 +56,6 @@ public class ControlTerminal : MonoBehaviour
             popup.SetActive(false);
         }
     }
-
-    public void ExitMiniGame()
-    {
-        playerInput.MiniGameUnactive();
-        playerState.inputBlock = 0.1f;
-        StartCoroutine(screenFade.FadeOut());
-
-        miniGame.SetActive(false);
-        miniGameUI.SetActive(false);
-        playerState.isPaused = false;
-        playerState.puzzleActive = false;
-    }
-
     private void CheckItemID(Inventory inventory)
     {
         if (canInteract) { return; }
@@ -105,7 +76,9 @@ public class ControlTerminal : MonoBehaviour
             }
         }
         if (!canInteract)
-         Debug.Log("Correct Key not found");
+            Debug.Log("Correct Key not found");
+
+
 
     }
 }
