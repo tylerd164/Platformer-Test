@@ -15,6 +15,9 @@ public class BallBehaviour : MonoBehaviour
     [SerializeField] private ControlTerminal controlTerminal;
     [SerializeField] private GameObject miniGame;
 
+    [Header("Door Animation")]
+    [SerializeField] Animator redDoor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,7 +56,11 @@ public class BallBehaviour : MonoBehaviour
         {
             this.transform.position = spawnPosition.position;
             rb.linearVelocity = Vector2.zero;
+
             controlTerminal.ExitMiniGame();
+
+            redDoor.SetBool("isOpen", true);
+            audiomanager.audioInstance.OpenDoor();
         }
     }
 }

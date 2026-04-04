@@ -152,6 +152,7 @@ public class PlayerInput : MonoBehaviour
         else
         {
             PauseGame();
+            audiomanager.audioInstance.ClickSound();
             pausedObject.SetActive(true);
         }
     }

@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public float clickIntensity = 0.2f;
     public float clickDuration = 0.1f;
 
+    [Header("Door Animation")]
+    [SerializeField] Animator purpleDoor;
+
     void Start()
     {
 
@@ -58,6 +61,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Puzzle Solved!");
 
             controlTerminal.ExitMiniGame();
+
+            purpleDoor.SetBool("isOpen", true);
+            audiomanager.audioInstance.OpenDoor();
 
             StartCoroutine(feedBack.VibrateController(winIntensity, winDuration));
         }

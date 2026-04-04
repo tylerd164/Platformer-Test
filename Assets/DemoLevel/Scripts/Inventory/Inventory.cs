@@ -31,8 +31,8 @@ public class Inventory : MonoBehaviour
             {
                 if (slot.item == item && slot.amount < item.maxStack)  // Checks if slot contains the same item, and stack is not full 
                 {
-                    slot.amount++;
-                    audiomanager.audioInstance.ItemPickup();             // If true, Increase the stack count, exit function
+                    slot.amount++;                                    // If true, Increase the stack count, exit function
+                    audiomanager.audioInstance.ItemPickup();             
                     StartCoroutine(feedBack.VibrateController(intensity, duration));
                     return true;
                 }

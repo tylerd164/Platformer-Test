@@ -7,8 +7,7 @@ public class DoorMechanics : MonoBehaviour
     [SerializeField] private PlayerStateController playerState;
     [SerializeField] private PlayerInput playerInput;
 
-    [Header("Door Settings")]
-    [SerializeField] GameObject door; 
+    [Header("Door Animation")]
     [SerializeField] Animator animator;
 
 
