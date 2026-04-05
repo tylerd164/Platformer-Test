@@ -57,15 +57,15 @@ public class WinCondition : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log("Next Level");
         playerInput.ResumeGame(); // resets the pause logic 
-        SceneManager.LoadScene(MAINMENU);
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentIndex + 1);
     }
 
     public void RestartLevel()
     {
         playerInput.ResumeGame(); // resets the pause logic 
-        SceneManager.LoadScene(LEVEL1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu()

@@ -40,6 +40,15 @@ public class LifeManager : MonoBehaviour
 
     private float deathTimer = 0f;
     private bool selected = false;
+
+    private void OnDisable()
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.ResetHaptics();
+        }
+    }
+
     private void Awake()
     {
         Instance = this;
@@ -83,8 +92,6 @@ public class LifeManager : MonoBehaviour
 
             if (deathTimer >= 4f)
             {
-                var gamepad = Gamepad.current;
-                gamepad.ResetHaptics();
                 playerState.isDead = false;
                 Time.timeScale = 0f;
                 gameOverUI.SetActive(true);
@@ -149,7 +156,7 @@ public class LifeManager : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Exit()

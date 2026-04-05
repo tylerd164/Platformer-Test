@@ -4,19 +4,20 @@ using UnityEngine.SceneManagement;
 public class LevelSelect : MonoBehaviour
 {
     private const string LEVEL1 = "Level1";
+    private const string LEVEL2 = "Level2";
 
     [SerializeField] private GameObject levelSelect;
     [SerializeField] private GameObject mainMenu;
 
     [SerializeField] private UINavController uiNavController;
-    public void DemoLevel()
+    public void Level1()
     {
         SceneManager.LoadScene(LEVEL1);
     }
 
-    public void ComingSoon()
+    public void Level2()
     {
-        Debug.Log("Coming Soon");
+        SceneManager.LoadScene(LEVEL2);
     }
 
     public void Back()

@@ -31,7 +31,6 @@ public class PlayerInput : MonoBehaviour
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject firstButton;
-    [SerializeField] private GameObject pausedObject;
 
     private InputActionMap playerMap;
     private InputActionMap uiMap;
@@ -153,7 +152,6 @@ public class PlayerInput : MonoBehaviour
         {
             PauseGame();
             audiomanager.audioInstance.ClickSound();
-            pausedObject.SetActive(true);
         }
     }
 
@@ -180,7 +178,6 @@ public class PlayerInput : MonoBehaviour
         playerState.isPaused = false;
 
         pauseMenu.SetActive(false);
-        pausedObject.SetActive(false);
 
         playerMap.Enable();
         uiMap.Disable();

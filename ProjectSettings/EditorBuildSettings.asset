@@ -9,17 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: 6d5c54423377d6642a0511caa5a2c8bc
   - enabled: 1
-    path: Assets/Scenes/DemoLevel.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/DeadScene.unity
-    guid: 02844cfde8c50314497a66ef8b38b240
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 741e31c41d8601648bfa6adda9192c72
-  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 40008e65711c74d47a15f2d8b5b49615
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: a4bd14c274ce18b49bf9034856fffef7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
