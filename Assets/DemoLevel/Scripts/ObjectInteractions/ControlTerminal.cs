@@ -10,7 +10,6 @@ public class ControlTerminal : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private ScreenFade screenFade;
 
-    [SerializeField] private GameObject popup;
     [SerializeField] private GameObject miniGameUI;
     [SerializeField] private GameObject miniGame;
 
@@ -60,7 +59,8 @@ public class ControlTerminal : MonoBehaviour
         if (other.CompareTag(PLAYER))
         {
             playerInRange = true;
-            popup.SetActive(true);
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = Color.white;
         }
     }
 
@@ -69,7 +69,8 @@ public class ControlTerminal : MonoBehaviour
         if (other.CompareTag(PLAYER))
         {
             playerInRange = false;
-            popup.SetActive(false);
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = new Color32(132, 132, 132, 255); // Sets sprite Renderer colour darker (grey);
         }
     }
 

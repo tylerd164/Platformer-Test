@@ -43,6 +43,8 @@ public class DoorMechanics : MonoBehaviour
         if (other.CompareTag(PLAYER))
         {
             playerInRange = true;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = Color.white;
             popup.SetActive(true);
         }
     }
@@ -52,6 +54,8 @@ public class DoorMechanics : MonoBehaviour
         if (other.CompareTag(PLAYER))
         {
             playerInRange = false;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = new Color32(132, 132, 132, 255); // Sets sprite Renderer colour darker;
             popup.SetActive(false);
         }
     }

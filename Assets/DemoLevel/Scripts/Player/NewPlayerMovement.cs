@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
+using System.Collections;
 
 public class NewPlayerMovement : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class NewPlayerMovement : MonoBehaviour
     public ControllerFeedBack feedBack;
 
     private Vector2 rayDir;
+    private Vector2 facingDir;
     private Vector2 lastMoveDirection = Vector2.right;
 
     private int jumpsRemaining;
@@ -62,6 +64,7 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isFacingWall;
     private bool givePlayerExtraJump;
     private bool deathTriggered;
+    private bool wasWallSliding;
 
     [Header("Player FX")]
     [SerializeField] private PlayerFX playerFX;
@@ -119,12 +122,13 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isTouchingWall && jumpsRemaining < 1 && !isFacingWall)
+        if (isWallSliding && jumpsRemaining < 1 && !isFacingWall)
         {
             Movement();
+            StartCoroutine(SpriteFlipDelay(0.15f));
         }
 
-        if (!isTouchingWall)
+        if(!isTouchingWall)
         {
             Movement();
         }
@@ -190,6 +194,7 @@ public class NewPlayerMovement : MonoBehaviour
         if (isTouchingWall && !isGrounded && rb.linearVelocity.y < 0)
         {
             isWallSliding = true;
+            wasWallSliding = true;
 
             // sliding mechanic: 
             rb.linearVelocity = new Vector2(-wallDirection * 2f, Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed));
@@ -216,6 +221,8 @@ public class NewPlayerMovement : MonoBehaviour
         {
             jumpsRemaining--;
         }
+
+        StartCoroutine(SpriteFlipDelay(0.1f));
     }
 
     private void ImprovedJumpingPhysics()
@@ -283,6 +290,11 @@ public class NewPlayerMovement : MonoBehaviour
         {
             jumpsRemaining = maxJumps - 1;
             givePlayerExtraJump = true;
+
+            if(wasWallSliding)
+            {
+                StartCoroutine(SpriteFlipDelay(0.1f));
+            }
         }
         //landing particle effect
         if (isGrounded && !wasGrounded)
@@ -296,7 +308,20 @@ public class NewPlayerMovement : MonoBehaviour
     private void HandleSpriteFlip()
     {
         Vector2 moveInput = playerInput.GetMovementVectorNormalized();
-        Vector2 facingDir = playerSprite.flipX ? Vector2.left : Vector2.right;
+
+        if (Mathf.Abs(moveInput.x) > 0.01f)
+            lastMoveDirection = new Vector2(moveInput.x, 0f);
+
+        if (lastMoveDirection.x > 0f)
+        {
+            facingDir = Vector2.right;
+        }
+
+
+        else if (lastMoveDirection.x < 0f)
+        {
+            facingDir = Vector2.left;
+        }
 
         RaycastHit2D facingWallUpper = Physics2D.Raycast(upperSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
         RaycastHit2D facingWallMiddle = Physics2D.Raycast(middleSurfaceCheck.position, facingDir, surfaceCheckDistance, levelLayer);
@@ -311,9 +336,14 @@ public class NewPlayerMovement : MonoBehaviour
         if (Mathf.Abs(moveInput.x) > 0.01f)
             lastMoveDirection = new Vector2(moveInput.x, 0f);
 
-        if (isWallSliding && jumpsRemaining == 0 || !isWallSliding)
+        if (!isWallSliding && !wasWallSliding)
         {
-            if (lastMoveDirection.x > 0f)
+            SpriteFlip();
+        }
+    }
+    private void SpriteFlip()
+    {
+        if (lastMoveDirection.x > 0f)
             {
                 playerSprite.flipX = false;
             }
@@ -323,7 +353,6 @@ public class NewPlayerMovement : MonoBehaviour
             {
                 playerSprite.flipX = true;
             }
-        }
     }
 
     #endregion
@@ -365,5 +394,11 @@ public class NewPlayerMovement : MonoBehaviour
             this.transform.position = respawnPoint.position;
         }
 
+    }
+
+    private IEnumerator SpriteFlipDelay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        wasWallSliding = false;
     }
 }
