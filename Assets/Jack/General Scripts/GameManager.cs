@@ -58,8 +58,6 @@ public class GameManager : MonoBehaviour
     {
         if(correctedPipes == totalPipes)
         {
-            Debug.Log("Puzzle Solved!");
-
             controlTerminal.ExitMiniGame();
 
             purpleDoor.SetBool("isOpen", true);

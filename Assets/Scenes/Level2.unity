@@ -79304,6 +79304,9 @@ MonoBehaviour:
   playerState: {fileID: 1784261291}
   playerAnimation: {fileID: 1420938814}
   firstButtonGameOver: {fileID: 1893544037}
+  respawnPoint: {fileID: 274269788}
+  respawnPoint2: {fileID: 1919461959}
+  screenFade: {fileID: 886541615}
   feedBack: {fileID: 1317515954}
   gameOverUI: {fileID: 283867780}
   playerHealth: 4
@@ -79424,9 +79427,6 @@ MonoBehaviour:
     m_Bits: 64
   intensity: 0.5
   duration: 0.2
-  respawnPoint: {fileID: 274269788}
-  respawnPoint2: {fileID: 1919461959}
-  screenFade: {fileID: 886541615}
   feedBack: {fileID: 1317515954}
   playerFX: {fileID: 1420938810}
 --- !u!50 &1420938815

@@ -44,10 +44,6 @@ public class NewPlayerMovement : MonoBehaviour
     public float intensity = 0.8f;
     public float duration = 0.8f;
 
-    [SerializeField] private Transform respawnPoint;
-    [SerializeField] private Transform respawnPoint2;
-    [SerializeField] private ScreenFade screenFade;
-
     private Rigidbody2D rb;
     private Collider2D playerCollider;
     public ControllerFeedBack feedBack;
@@ -386,23 +382,6 @@ public class NewPlayerMovement : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Debris")
-        {
-            StartCoroutine(screenFade.FadeOutRespawn());
-            this.transform.position = respawnPoint.position;
-        }
-
-        if(collision.gameObject.name == "Debris2")
-        {
-            StartCoroutine(screenFade.FadeOutRespawn());
-            this.transform.position = respawnPoint2.position;
-        }
-
-    }
-
     private IEnumerator SpriteFlipDelay(float t)
     {
         yield return new WaitForSeconds(t);

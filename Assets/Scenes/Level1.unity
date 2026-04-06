@@ -39349,8 +39349,8 @@ Transform:
   m_GameObject: {fileID: 1344563739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.16169, y: 1.37, z: 0}
-  m_LocalScale: {x: 0.38966227, y: 0.34556773, z: 0.34556773}
+  m_LocalPosition: {x: 6.19548, y: 1.37, z: 0}
+  m_LocalScale: {x: 0.39135727, y: 0.34556773, z: 0.34556773}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 728207534}
@@ -39830,6 +39830,9 @@ MonoBehaviour:
   playerState: {fileID: 1784261291}
   playerAnimation: {fileID: 1420938814}
   firstButtonGameOver: {fileID: 798545039}
+  respawnPoint: {fileID: 274269788}
+  respawnPoint2: {fileID: 0}
+  screenFade: {fileID: 1318357545}
   feedBack: {fileID: 1317515954}
   gameOverUI: {fileID: 1502506021}
   playerHealth: 4
@@ -39950,9 +39953,6 @@ MonoBehaviour:
     m_Bits: 64
   intensity: 0.5
   duration: 0.2
-  respawnPoint: {fileID: 274269788}
-  respawnPoint2: {fileID: 0}
-  screenFade: {fileID: 1318357545}
   feedBack: {fileID: 1317515954}
   playerFX: {fileID: 1420938810}
 --- !u!50 &1420938815

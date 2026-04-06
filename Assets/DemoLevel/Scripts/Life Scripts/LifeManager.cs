@@ -14,6 +14,12 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private NewPlayerMovement playerAnimation;
     [SerializeField] private GameObject firstButtonGameOver;
 
+    [Header("Respawn")]
+    [SerializeField] private Transform respawnPoint;
+    [SerializeField] private Transform respawnPoint2;
+    [SerializeField] private ScreenFade screenFade;
+
+
     public static LifeManager Instance;
     public ControllerFeedBack feedBack;
     public GameObject gameOverUI;
@@ -73,6 +79,21 @@ public class LifeManager : MonoBehaviour
             StartCoroutine(feedBack.VibrateController(damageIntensity, damageDuration));
             lastDamageTime = Time.time;
         }
+
+        if (playerHealth >=1)
+        {
+            if (collision.gameObject.name == "Debris")
+            {
+                StartCoroutine(screenFade.FadeOutRespawn());
+                this.transform.position = respawnPoint.position;
+            }
+
+            if (collision.gameObject.name == "Debris2")
+            {
+                StartCoroutine(screenFade.FadeOutRespawn());
+                this.transform.position = respawnPoint2.position;
+            }
+        }
     }
 
     public void Update()
@@ -95,6 +116,11 @@ public class LifeManager : MonoBehaviour
                 playerState.isDead = false;
                 Time.timeScale = 0f;
                 gameOverUI.SetActive(true);
+
+                if (Gamepad.current != null)
+                {
+                    Gamepad.current.ResetHaptics();
+                }
 
                 if (!selected)
                 {
