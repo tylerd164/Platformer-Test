@@ -45,6 +45,7 @@ public class NewPlayerMovement : MonoBehaviour
     public float duration = 0.8f;
 
     [SerializeField] private Transform respawnPoint;
+    [SerializeField] private Transform respawnPoint2;
     [SerializeField] private ScreenFade screenFade;
 
     private Rigidbody2D rb;
@@ -392,6 +393,12 @@ public class NewPlayerMovement : MonoBehaviour
         {
             StartCoroutine(screenFade.FadeOutRespawn());
             this.transform.position = respawnPoint.position;
+        }
+
+        if(collision.gameObject.name == "Debris2")
+        {
+            StartCoroutine(screenFade.FadeOutRespawn());
+            this.transform.position = respawnPoint2.position;
         }
 
     }

@@ -9,13 +9,16 @@ public class ControlsTutorial : MonoBehaviour
     {
         if (other.CompareTag(PLAYER))
         {
-            doubleJumpTutorial.SetActive(true);
+            if(doubleJumpTutorial != null)
+            {
+                doubleJumpTutorial.SetActive(true);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(PLAYER))
+        if (doubleJumpTutorial != null)
         {
             doubleJumpTutorial.SetActive(false);
         }

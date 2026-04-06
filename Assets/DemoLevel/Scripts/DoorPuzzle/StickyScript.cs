@@ -15,7 +15,7 @@ public class StickyScript : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.bodyType = RigidbodyType2D.Kinematic; 
+            //rb.bodyType = RigidbodyType2D.Kinematic; 
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }

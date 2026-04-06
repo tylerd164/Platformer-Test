@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - MazeWall
   - ConductorStorage
+  - Debris
   layers:
   - Default
   - TransparentFX

@@ -1,39 +1,53 @@
 using UnityEngine;
-using System.Linq;
 
 public class PipeRotationScript : MonoBehaviour
 {
-    public float[] correctRotations;
-    private bool isPlaced = false;
-    private GameManager gameManager;
-
-    private void Awake()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
+    public float[] correctRotations; // Supports multiple correct angles (e.g., straight pipes)
+    [SerializeField] private bool isPlaced = false;
+    [SerializeField] private GameManager gameManager;
     private void Start()
     {
-        transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 4) * 90);
+        // Randomize initial rotation
+        int rand = Random.Range(0, 4);
+        transform.eulerAngles = new Vector3(0, 0, rand * 90);
+        
         CheckRotation();
     }
 
-    private void OnMouseDown()
+    public void OnClick()
     {
-        transform.Rotate(0, 0, 90);
+        // Rotate 90 degrees
+        transform.Rotate(new Vector3(0, 0, 90));
+        audiomanager.audioInstance.ClickSound();
         CheckRotation();
     }
 
     private void CheckRotation()
     {
+        // Round the Z angle to the nearest whole number to avoid precision errors
+        // Use Mathf.Repeat to ensure 360 becomes 0
         float currentZ = Mathf.Round(Mathf.Repeat(transform.eulerAngles.z, 360));
 
-        bool nowCorrect = correctRotations.Any(angle => Mathf.Abs(currentZ - angle) < 0.1f);
-
-        if (nowCorrect != isPlaced)
+        bool nowCorrect = false;
+        foreach (float angle in correctRotations)
         {
-            isPlaced = nowCorrect;
-            if (isPlaced) gameManager.correctMove(); else gameManager.wrongMove();
+            if (Mathf.Abs(currentZ - angle) < 0.1f)
+            {
+                nowCorrect = true;
+                break;
+            }
+        }
+
+        // Only trigger GameManager if the status actually CHANGED
+        if (nowCorrect && !isPlaced)
+        {
+            isPlaced = true;
+            gameManager.correctMove();
+        }
+        else if (!nowCorrect && isPlaced)
+        {
+            isPlaced = false;
+            gameManager.wrongMove(); // Make sure your GameManager has this!
         }
     }
 }

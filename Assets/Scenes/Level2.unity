@@ -72882,7 +72882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1034291558
@@ -74394,6 +74394,7 @@ Transform:
   - {fileID: 1860774651}
   - {fileID: 1420938808}
   - {fileID: 274269788}
+  - {fileID: 1919461959}
   - {fileID: 1693688862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76199,7 +76200,7 @@ GameObject:
   - component: {fileID: 1208509998}
   - component: {fileID: 1208509999}
   m_Layer: 0
-  m_Name: Debris (1)
+  m_Name: Debris2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79424,6 +79425,7 @@ MonoBehaviour:
   intensity: 0.5
   duration: 0.2
   respawnPoint: {fileID: 274269788}
+  respawnPoint2: {fileID: 1919461959}
   screenFade: {fileID: 886541615}
   feedBack: {fileID: 1317515954}
   playerFX: {fileID: 1420938810}
@@ -86027,6 +86029,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4620146177186372744, guid: ce8bacd2b57840242b711e03b8565f29, type: 3}
   m_PrefabInstance: {fileID: 1203110006}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1919461958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919461959}
+  m_Layer: 8
+  m_Name: PlayerRespawnPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919461959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919461958}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 298, y: 11.1, z: 1.1656975}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1106320114}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919647279
 GameObject:
   m_ObjectHideFlags: 0

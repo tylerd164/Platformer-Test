@@ -1078,8 +1078,8 @@ Transform:
   m_GameObject: {fileID: 105044400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.107, y: 3.08, z: 0}
-  m_LocalScale: {x: 0.11984806, y: 0.112959996, z: 0.112959996}
+  m_LocalPosition: {x: 15.13904, y: 3.08, z: 0}
+  m_LocalScale: {x: 0.11671163, y: 0.112959996, z: 0.112959996}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 728207534}
@@ -35143,7 +35143,7 @@ RectTransform:
   m_GameObject: {fileID: 875242213}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.91489094, y: 0.91489094, z: 0.91489094}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1815498063}
@@ -35151,7 +35151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -155.75, y: 756}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &884848019
@@ -39951,6 +39951,7 @@ MonoBehaviour:
   intensity: 0.5
   duration: 0.2
   respawnPoint: {fileID: 274269788}
+  respawnPoint2: {fileID: 0}
   screenFade: {fileID: 1318357545}
   feedBack: {fileID: 1317515954}
   playerFX: {fileID: 1420938810}
