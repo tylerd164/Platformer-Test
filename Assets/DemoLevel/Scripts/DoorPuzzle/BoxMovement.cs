@@ -4,30 +4,20 @@ using UnityEngine;
 public class PushableBox2D : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public bool isBeingPushed { get; private set; }
+    
+    public bool IsBeingPushed => rb != null && rb.linearVelocity.magnitude > 0.1f;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (rb.linearVelocity.magnitude > 0.1f)
+        if (collision.gameObject.CompareTag("Hazard"))
         {
-            isBeingPushed = true;
-        }
-        else
-        {
-            isBeingPushed = false;
+            collision.gameObject.GetComponent<PlayerLives>()?.TakeDamage();
         }
     }
-    
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-     //   if(collision.gameObject.CompareTag("Hazard"))
-      //  {
-      //      GetComponent<PlayerLives>().TakeDamage();
-       // }
-   // }
+    */
 }
