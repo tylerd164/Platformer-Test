@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -7,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class WinCondition : MonoBehaviour
 {
     private const string MAINMENU = "MainMenuScene";
-    private const string LEVEL1 = "Level1";
 
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerStateController playerState;
@@ -35,8 +33,6 @@ public class WinCondition : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerState.isPaused = true;
-            playerState.isPlaying = false;
             audiomanager.audioInstance.ItemPickup();
             StartCoroutine(feedBack.VibrateController(intensity, duration));
             Destroy(winHelmet);

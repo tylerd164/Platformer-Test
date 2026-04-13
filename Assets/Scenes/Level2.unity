@@ -317,7 +317,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 1
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1990419177
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5685,8 +5685,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 17
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -8881,8 +8881,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 38
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -71794,9 +71794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad351ab6ea0c441428475e96042b5d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenFadeImage: {fileID: 306916339}
   screenFadeImageRespawn: {fileID: 991434649}
-  screenFadeObjectMiniGame: {fileID: 1024855256}
   screenFadeObjectRespawn: {fileID: 970971470}
   fadeDuration: 1
   fullImageTime: 3
@@ -72136,8 +72134,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 33.4
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -74219,8 +74217,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 11
-    NearClipPlane: 3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -77432,8 +77430,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 1
+  far clip plane: 10000
   field of view: 34
   orthographic: 1
   orthographic size: 17
@@ -78691,8 +78689,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 35
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:

@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class ControlTerminal : MonoBehaviour
 {
@@ -47,7 +45,7 @@ public class ControlTerminal : MonoBehaviour
 
     void Interact()
     {
-        StartCoroutine(screenFade.FadeOut());
+        StartCoroutine(screenFade.FadeOutRespawn());
         playerInput.MiniGameActive();
         miniGame.SetActive(true);
         miniGameUI.SetActive(true);
@@ -78,7 +76,7 @@ public class ControlTerminal : MonoBehaviour
     {
         playerInput.MiniGameUnactive();
         playerState.inputBlock = 0.1f;
-        StartCoroutine(screenFade.FadeOut());
+        StartCoroutine(screenFade.FadeOutRespawn());
 
         miniGame.SetActive(false);
         miniGameUI.SetActive(false);

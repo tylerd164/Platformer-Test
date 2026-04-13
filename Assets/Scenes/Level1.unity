@@ -5451,8 +5451,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 15
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -7924,8 +7924,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 35
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -9052,7 +9052,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 1
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1990419177
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -35118,42 +35118,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &875242213
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 875242214}
-  m_Layer: 5
-  m_Name: ScreenFadeObject-MiniGame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &875242214
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875242213}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.91489094, y: 0.91489094, z: 0.91489094}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1815498063}
-  m_Father: {fileID: 1318357546}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -155.75, y: 756}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &884848019
 GameObject:
   m_ObjectHideFlags: 0
@@ -35923,8 +35887,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 33.4
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -37081,8 +37045,8 @@ MonoBehaviour:
   Lens:
     FieldOfView: 34
     OrthographicSize: 11
-    NearClipPlane: 3
-    FarClipPlane: 1000
+    NearClipPlane: 1
+    FarClipPlane: 10000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -38709,8 +38673,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 1
+  far clip plane: 10000
   field of view: 34
   orthographic: 1
   orthographic size: 15
@@ -39162,9 +39126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad351ab6ea0c441428475e96042b5d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenFadeImage: {fileID: 1815498065}
   screenFadeImageRespawn: {fileID: 855559343}
-  screenFadeObjectMiniGame: {fileID: 875242213}
   screenFadeObjectRespawn: {fileID: 248875706}
   fadeDuration: 1
   fullImageTime: 3
@@ -39180,7 +39142,6 @@ RectTransform:
   m_LocalScale: {x: 1.1332802, y: 1.1332802, z: 1.1332802}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 875242214}
   - {fileID: 248875707}
   m_Father: {fileID: 805343526}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43496,81 +43457,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1815498062
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1815498063}
-  - component: {fileID: 1815498064}
-  - component: {fileID: 1815498065}
-  m_Layer: 5
-  m_Name: FadeImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1815498063
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815498062}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 34.094173, y: 34.094173, z: 34.094173}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 875242214}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: -288}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1815498064
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815498062}
-  m_CullTransparentMesh: 1
---- !u!114 &1815498065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815498062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -1614656265945195776, guid: 6242b0844dffa314f9ba4b6ababd2082, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &1832534672
 PrefabInstance:
   m_ObjectHideFlags: 0

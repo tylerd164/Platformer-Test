@@ -1,9 +1,6 @@
-using System.Data;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static States;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -52,7 +49,6 @@ public class PlayerInput : MonoBehaviour
     public bool win { get; set; }
 
     private Vector2 inputValue;
-    private float idleTimer;
 
     #region Unity Lifecycle
 
@@ -112,7 +108,7 @@ public class PlayerInput : MonoBehaviour
 
         if (pauseMenu.activeSelf)
         {
-            // Will defaul to fist button on UI
+            // Will defaul to fist button on pause UI
             if (EventSystem.current.currentSelectedGameObject == null)
             {
                 EventSystem.current.SetSelectedGameObject(firstButton);
@@ -129,7 +125,6 @@ public class PlayerInput : MonoBehaviour
         inputValue = moveAction.ReadValue<Vector2>();
         playerState.jumpPressed = jumpAction.WasPressedThisFrame();
 
-        //playerState.sprintPressed = sprintAction.IsPressed();
     }
 
     private void OnPausePressed(InputAction.CallbackContext context)
@@ -152,6 +147,7 @@ public class PlayerInput : MonoBehaviour
         {
             PauseGame();
             audiomanager.audioInstance.ClickSound();
+            pauseMenu.SetActive(true);
         }
     }
 
@@ -161,14 +157,10 @@ public class PlayerInput : MonoBehaviour
 
         playerState.isPaused = true;
 
-        pauseMenu.SetActive(true);
-
         Time.timeScale = 0f;
 
         playerMap.Disable();
         uiMap.Enable();
-
-        EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     public void ResumeGame()

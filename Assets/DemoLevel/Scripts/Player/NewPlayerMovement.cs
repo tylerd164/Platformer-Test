@@ -1,10 +1,4 @@
-﻿using System.Security.Cryptography;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
-using UnityEngine.Windows;
+﻿using UnityEngine;
 using System.Collections;
 
 public class NewPlayerMovement : MonoBehaviour
